@@ -1,5 +1,11 @@
 # Daily run: Word of the Day video (@canyouguessthisword)
 
+> **Current mode (since 2026-11-07): pre-scheduled batch.** All posts from 2026-11-08 to 2026-12-31 were
+> rendered in one batch (`batch/2026-nov-dec.py`) and scheduled in Metricool to auto-publish at
+> **10:00am Mexico City time** every day. There is no daily generation task right now. The steps
+> below describe how to make one post, and are reused to build the next batch.
+
+
 The scheduled task follows these steps every morning (starts 5:39am New York time; the post goes
 live at 6:00am New York time). Fully automated: no human approval step.
 Edit this file to change how the daily run behaves; the task reads it fresh each run.
