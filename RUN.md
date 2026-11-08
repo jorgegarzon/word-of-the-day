@@ -40,17 +40,23 @@ Confirm the final file is 15.0 seconds with `ffprobe`.
   `#wordoftheday #vocabulary #englishwords #learnenglish` + one about the topic.
 - First comment: a funny example sentence by "us", so the comments aren't empty.
 
-## 5. Send as a DRAFT (never publish directly)
-Using the Metricool connector, create a draft/scheduled post for both Instagram (Reel)
-and TikTok with the video and caption, scheduled for 10:00am Mexico City time today but
-saved as a draft that Jorge approves. If Metricool needs a public video URL, follow the
-hosting method recorded in `HOSTING.md`.
-If posting fails, still finish steps 6–7 and say what failed.
+## 5. Deliver
+- Copy the final video to `videos/wotd-YYYY-MM-DD-<word>.mp4` (this folder is the archive).
+- **If a Metricool connector is available in the session:** create a draft post (never
+  publish directly) for Instagram (Reel) and TikTok with the video and caption, for 10:00am
+  Mexico City time today, for Jorge to approve. If Metricool needs a public video URL,
+  use the GitHub link to the file only if the repo is public; otherwise say so and skip.
+- **Always:** send the MP4 into this session with SendUserFile so Jorge can download it
+  from the Claude app, and send a push notification: today's word and that the video is ready.
 
 ## 6. Record the word
-Append `{"word", "date", "number", "posted": "draft"}` to `words_used.json`, commit
-(`Word of the day: <word>`) and push to `main`.
+Append `{"word", "date", "number", "posted": "draft" or "emailed"}` to `words_used.json`,
+then commit (`Word of the day: <word>`) and push to `main`.
 
-## 7. Tell Jorge
-Send a push notification: the word, the hook caption and whether the drafts were created.
-Also send the MP4 file into the session.
+## 7. Email Jorge
+With the Microsoft 365 connector, send ONE email to jorgeogarzon@live.com:
+- Subject: `Word of the day: <word>`
+- Body (HTML): the caption ready to copy, the first comment, the 3 options with the answer,
+  a link to the video in GitHub
+  (`https://github.com/jorgegarzon/word-of-the-day/blob/main/videos/<file>`),
+  and whether Metricool drafts were created or anything failed.
