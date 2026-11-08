@@ -2,6 +2,7 @@
 
 The scheduled task follows these steps every morning (8:40am Mexico City time).
 Edit this file to change how the daily run behaves; the task reads it fresh each run.
+All dates (file names, `words_used.json`) use Mexico City local time: `TZ=America/Mexico_City date +%F`.
 
 ## 1. Pick the word
 - Read `words_used.json`. Never reuse a word that is in it.
