@@ -1,0 +1,40 @@
+{
+  "word": "kerfuffle",
+  "pronunciation": "ker-FUFF-ul",
+  "part_of_speech": "noun",
+  "number": 1,
+  "options": [
+    "A fluffy Scottish pastry",
+    "A big fuss over nothing",
+    "A secret, sneaky plan"
+  ],
+  "answer": 1,
+  "example": "The office had a total kerfuffle over the last donut.",
+  "captions": [
+    [
+      0.0,
+      3.3,
+      "90% of people can't guess what this word means"
+    ],
+    [
+      3.4,
+      6.9,
+      "Kerfuffle. Is it A, B, or C?"
+    ],
+    [
+      7.0,
+      8.9,
+      "It's B! A big fuss over nothing."
+    ],
+    [
+      9.0,
+      12.5,
+      "Like the office kerfuffle over the last donut."
+    ],
+    [
+      12.6,
+      14.6,
+      "Use it in the comments!"
+    ]
+  ]
+}
