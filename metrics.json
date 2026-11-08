@@ -1,1 +1,24 @@
-[]
+[
+  {
+    "word": "discombobulated",
+    "date": "2026-11-07",
+    "hook_style": "tag",
+    "instagram": {
+      "url": "https://www.instagram.com/reel/DfdrqAliZiF/",
+      "views": null,
+      "reach": null,
+      "likes": null,
+      "comments": null,
+      "shares": null,
+      "saves": null,
+      "follows": null,
+      "avg_watch_time": null,
+      "note": "Metricool reels analytics returned no rows yet (reel ~2h old; brand connected to Metricool 2026-11-08 03:13 Madrid)"
+    },
+    "tiktok": null,
+    "score": null,
+    "provisional": true,
+    "age_days": 0,
+    "updated": "2026-11-08T04:45:00Z"
+  }
+]
