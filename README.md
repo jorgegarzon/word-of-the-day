@@ -11,4 +11,4 @@ Try it locally: `python3 render.py examples/kerfuffle.json out.mp4 --no-captions
 
 ## Brand
 - Handle: @canyouguessthisword (Instagram, TikTok)
-- Logo: `brand/logo.png`
+- Avatar (profile picture for Instagram and TikTok): `brand/avatar.png`
