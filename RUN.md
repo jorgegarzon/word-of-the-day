@@ -1,6 +1,7 @@
 # Daily run: Word of the Day video (@canyouguessthisword)
 
-The scheduled task follows these steps every morning (8:40am Mexico City time).
+The scheduled task follows these steps every morning (starts 5:39am New York time; the post goes
+live at 6:00am New York time). Fully automated: no human approval step.
 Edit this file to change how the daily run behaves; the task reads it fresh each run.
 All dates (file names, `words_used.json`) use Mexico City local time: `TZ=America/Mexico_City date +%F`.
 
@@ -64,28 +65,33 @@ First comment: a funny sentence using the word "from us", so the comments aren't
 
 ## 5. Deliver
 - Copy the final video to `videos/wotd-YYYY-MM-DD-<word>.mp4` (this folder is the archive).
-- **If a Metricool connector is available in the session:** create a draft post (never
-  publish directly) for Instagram (Reel) and TikTok with the video and caption, for 10:00am
-  Mexico City time today, for Jorge to approve. If Metricool needs a public video URL,
-  use the raw GitHub link to the file only if the repo is public
-  (`https://raw.githubusercontent.com/jorgegarzon/word-of-the-day/main/videos/<file>`, after the push
-  in step 6, so do step 6 before the Metricool draft); otherwise say so and skip.
-  The Metricool brand currently has only Instagram connected: draft the Reel there, and add TikTok
-  only if `getBrandSettings` shows a TikTok account.
-- **Always:** send the MP4 into this session with SendUserFile so Jorge can download it
-  from the Claude app, and send a push notification: today's word and that the video is ready.
+- **Publish through Metricool (automatic, no draft).** Do step 6 (commit and push) first, so the
+  video is reachable at its raw GitHub URL
+  (`https://raw.githubusercontent.com/jorgegarzon/word-of-the-day/main/videos/<file>`; the repo must
+  be public, otherwise report it and stop). Then call `getBrandSettings` and create ONE scheduled
+  post with `createScheduledPost` for **every network connected to the brand** (today only
+  Instagram; add TikTok, YouTube Shorts, Facebook Reels etc. as they appear), with
+  `"draft": false` and `"autoPublish": true`, so Metricool publishes it by itself:
+  - date: 06:00 America/New_York today; if that is less than 5 minutes away or already past,
+    10 minutes from now.
+  - Instagram: `instagramData.type = "REEL"`, `showReelOnFeed: true`. TikTok: `tiktokData` with
+    `privacyOption: "PUBLIC_TO_EVERYONE"`. YouTube: type `short`, `madeForKids: false`, title =
+    "<Word>: can you guess what it means? #shorts".
+  - text = the caption, `firstCommentText` = the first comment.
+  Then record the returned post id/uuid and `plannerUrl` in `words_used.json`
+  (`"posted": "scheduled"`, `"metricool_uuid"`, `"publish_at"`) and push again.
+  If Metricool rejects the post, report the exact error (email + push) and stop; do not retry
+  with different content.
+- **Always:** send the MP4 into this session with SendUserFile, and send a push notification:
+  today's word, the publish time and the networks, or what failed.
 
 ## 6. Record the word
-Append `{"word", "date", "number", "posted": "draft" or "emailed", "hook_style", "hook", "caption"}`
+Append `{"word", "date", "number", "posted": "scheduled" (or "failed"), "hook_style", "hook", "caption"}`
 to `words_used.json`,
 then commit (`Word of the day: <word>`) and push to `main`.
 
-## 6b. Measure (needs the Metricool connector; skip quietly if it isn't available)
-For every post in `words_used.json` that is 3–30 days old, fetch its Instagram and TikTok stats
-from Metricool (views/reach, likes, comments, shares, saves, new follows, average watch time if
-available) and write/refresh its entry in `metrics.json`:
-`{"word", "date", "hook_style", "instagram": {...}, "tiktok": {...}, "score", "updated"}`.
-Match posts by date and caption. Commit `metrics.json` with the word commit.
+## 6b. Measure
+Measurement runs separately every evening (see `MEASURE.md`); the morning run does not measure.
 
 ## 7. Email Jorge
 With the Microsoft 365 connector, send ONE email to jorgeogarzon@live.com:
@@ -93,7 +99,5 @@ With the Microsoft 365 connector, send ONE email to jorgeogarzon@live.com:
 - Body (HTML): the caption ready to copy, the first comment, the 3 options with the answer,
   a link to the video in GitHub
   (`https://github.com/jorgegarzon/word-of-the-day/blob/main/videos/<file>`),
-  and whether Metricool drafts were created or anything failed.
-- **On Mondays**, add a "Hook report" section: for each hook style, the number of posts measured,
-  average views and average score, which style is winning, and the 3 best and 3 worst posts
-  of the past 4 weeks with their hooks. Note when there isn't enough data yet.
+  the publish time, the networks and the Metricool planner link, and anything that failed.
+- The weekly hook report is sent by the nightly measurement run (`MEASURE.md`).
