@@ -1,4 +1,4 @@
-# Daily run: Word of the Day video
+# Daily run: Word of the Day video (@canyouguessthisword)
 
 The scheduled task follows these steps every morning (8:40am Mexico City time).
 Edit this file to change how the daily run behaves; the task reads it fresh each run.
@@ -36,7 +36,8 @@ Confirm the final file is 15.0 seconds with `ffprobe`.
 
 ## 4. Caption and first comment
 - Caption: first line is a hook, not the definition (e.g. "Finally, a word for every
-  family group chat 😂"), then "Guess before the reveal 👀", then 4–5 hashtags:
+  family group chat 😂"), then "Guess before the reveal 👀", then
+  "Follow @canyouguessthisword for tomorrow's word", then 4–5 hashtags:
   `#wordoftheday #vocabulary #englishwords #learnenglish` + one about the topic.
 - First comment: a funny example sentence by "us", so the comments aren't empty.
 
