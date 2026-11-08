@@ -67,7 +67,11 @@ First comment: a funny sentence using the word "from us", so the comments aren't
 - **If a Metricool connector is available in the session:** create a draft post (never
   publish directly) for Instagram (Reel) and TikTok with the video and caption, for 10:00am
   Mexico City time today, for Jorge to approve. If Metricool needs a public video URL,
-  use the GitHub link to the file only if the repo is public; otherwise say so and skip.
+  use the raw GitHub link to the file only if the repo is public
+  (`https://raw.githubusercontent.com/jorgegarzon/word-of-the-day/main/videos/<file>`, after the push
+  in step 6, so do step 6 before the Metricool draft); otherwise say so and skip.
+  The Metricool brand currently has only Instagram connected: draft the Reel there, and add TikTok
+  only if `getBrandSettings` shows a TikTok account.
 - **Always:** send the MP4 into this session with SendUserFile so Jorge can download it
   from the Claude app, and send a push notification: today's word and that the video is ready.
 
