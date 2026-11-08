@@ -75,12 +75,12 @@ First comment: a funny sentence using the word "from us", so the comments aren't
   video is reachable at its raw GitHub URL
   (`https://raw.githubusercontent.com/jorgegarzon/word-of-the-day/main/videos/<file>`; the repo must
   be public, otherwise report it and stop). Then call `getBrandSettings` and create ONE scheduled
-  post with `createScheduledPost` for **every network connected to the brand** (today only
-  Instagram; add TikTok, YouTube Shorts, Facebook Reels etc. as they appear), with
+  post with `createScheduledPost` for **every network connected to the brand** (currently
+  Instagram + Facebook Page; add TikTok, YouTube Shorts etc. as they appear), with
   `"draft": false` and `"autoPublish": true`, so Metricool publishes it by itself:
   - date: 06:00 America/New_York today; if that is less than 5 minutes away or already past,
     10 minutes from now.
-  - Instagram: `instagramData.type = "REEL"`, `showReelOnFeed: true`. TikTok: `tiktokData` with
+  - Instagram: `instagramData.type = "REEL"`, `showReelOnFeed: true`. Facebook: `facebookData.type = "REEL"`. TikTok: `tiktokData` with
     `privacyOption: "PUBLIC_TO_EVERYONE"`. YouTube: type `short`, `madeForKids: false`, title =
     "<Word>: can you guess what it means? #shorts".
   - text = the caption, `firstCommentText` = the first comment.
