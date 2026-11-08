@@ -36,11 +36,31 @@ overflow its box or run off screen; if it does, shorten the text and redraw.
 Confirm the final file is 15.0 seconds with `ffprobe`.
 
 ## 4. Caption and first comment
-- Caption: first line is a hook, not the definition (e.g. "Finally, a word for every
-  family group chat 😂"), then "Guess before the reveal 👀", then
-  "Follow @canyouguessthisword for tomorrow's word", then 4–5 hashtags:
-  `#wordoftheday #vocabulary #englishwords #learnenglish` + one about the topic.
-- First comment: a funny example sentence by "us", so the comments aren't empty.
+Format (never reveal the meaning in the caption; people read it while the video plays):
+```
+<hook>
+
+Guess before the reveal 👀 A, B or C?
+
+Follow @canyouguessthisword for tomorrow's word
+
+#wordoftheday #vocabulary #englishwords #learnenglish #<topic>
+```
+**Hook styles** (record which one you used):
+- `relatable`: a moment everyone has lived. "When your boss says 'can we talk?' 😬"
+- `challenge`: dares the viewer. "I bet you've felt this and didn't know the word"
+- `tag`: invites tagging. "Tag the friend who gets this before every flight ✈️"
+- `surprise`: the word sounds fake. "This sounds made up. It's not."
+
+**Choosing the style** (see `metrics.json`, written in step 6b):
+1. Post #1 uses `relatable`. After that, rotate in the order relatable → challenge → tag →
+   surprise, continuing from the last style in `words_used.json`.
+2. Once every style has at least 4 posts with metrics, switch to: 60% of days the style with the
+   best average score, 40% of days rotate through the others (keep testing; tastes change).
+3. Score per post = (comments + shares + saves) per 1,000 views, plus 0.5 × views/1,000.
+   Ignore posts younger than 3 days (numbers still moving).
+
+First comment: a funny sentence using the word "from us", so the comments aren't empty.
 
 ## 5. Deliver
 - Copy the final video to `videos/wotd-YYYY-MM-DD-<word>.mp4` (this folder is the archive).
@@ -52,8 +72,16 @@ Confirm the final file is 15.0 seconds with `ffprobe`.
   from the Claude app, and send a push notification: today's word and that the video is ready.
 
 ## 6. Record the word
-Append `{"word", "date", "number", "posted": "draft" or "emailed"}` to `words_used.json`,
+Append `{"word", "date", "number", "posted": "draft" or "emailed", "hook_style", "hook", "caption"}`
+to `words_used.json`,
 then commit (`Word of the day: <word>`) and push to `main`.
+
+## 6b. Measure (needs the Metricool connector; skip quietly if it isn't available)
+For every post in `words_used.json` that is 3–30 days old, fetch its Instagram and TikTok stats
+from Metricool (views/reach, likes, comments, shares, saves, new follows, average watch time if
+available) and write/refresh its entry in `metrics.json`:
+`{"word", "date", "hook_style", "instagram": {...}, "tiktok": {...}, "score", "updated"}`.
+Match posts by date and caption. Commit `metrics.json` with the word commit.
 
 ## 7. Email Jorge
 With the Microsoft 365 connector, send ONE email to jorgeogarzon@live.com:
@@ -62,3 +90,6 @@ With the Microsoft 365 connector, send ONE email to jorgeogarzon@live.com:
   a link to the video in GitHub
   (`https://github.com/jorgegarzon/word-of-the-day/blob/main/videos/<file>`),
   and whether Metricool drafts were created or anything failed.
+- **On Mondays**, add a "Hook report" section: for each hook style, the number of posts measured,
+  average views and average score, which style is winning, and the 3 best and 3 worst posts
+  of the past 4 weeks with their hooks. Note when there isn't enough data yet.
