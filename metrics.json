@@ -5,6 +5,29 @@
     "hook_style": "tag",
     "instagram": {
       "url": "https://www.instagram.com/reel/DfdrqAliZiF/",
+      "views": 127,
+      "reach": 104,
+      "likes": 1,
+      "comments": 1,
+      "shares": 1,
+      "saves": 0,
+      "follows": null,
+      "avg_watch_time": 5.325,
+      "note": "follows not available per reel in Metricool"
+    },
+    "facebook": null,
+    "tiktok": null,
+    "score": 15.81,
+    "provisional": true,
+    "age_days": 1,
+    "updated": "2026-11-09T04:45:00Z"
+  },
+  {
+    "word": "petrichor",
+    "date": "2026-11-08",
+    "hook_style": "surprise",
+    "instagram": {
+      "url": "https://www.instagram.com/reel/DffRUyrAMG0/",
       "views": null,
       "reach": null,
       "likes": null,
@@ -13,12 +36,20 @@
       "saves": null,
       "follows": null,
       "avg_watch_time": null,
-      "note": "Metricool reels analytics returned no rows yet (reel ~2h old; brand connected to Metricool 2026-11-08 03:13 Madrid)"
+      "note": "Metricool reels analytics returned no rows yet (reel ~17h old)"
+    },
+    "facebook": {
+      "url": "https://facebook.com/reel/1480985623945029",
+      "views": null,
+      "reach": null,
+      "likes": null,
+      "avg_watch_time": null,
+      "note": "Metricool Facebook reels analytics returned no rows yet"
     },
     "tiktok": null,
     "score": null,
     "provisional": true,
     "age_days": 0,
-    "updated": "2026-11-08T04:45:00Z"
+    "updated": "2026-11-09T04:45:00Z"
   }
 ]

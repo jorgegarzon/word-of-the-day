@@ -41,7 +41,7 @@
     "word": "petrichor",
     "date": "2026-11-08",
     "number": 4,
-    "posted": "scheduled",
+    "posted": "published",
     "hook_style": "surprise",
     "hook": "This sounds like a dinosaur. It's not 🦕",
     "caption": "This sounds like a dinosaur. It's not 🦕\n\nGuess before the reveal 👀 A, B or C?\n\nFollow @canyouguessthisword for tomorrow's word\n\n#wordoftheday #vocabulary #englishwords #learnenglish #rain",
@@ -49,7 +49,13 @@
     "publish_at": "2026-11-08T10:00:00-06:00",
     "file": "videos/wotd-2026-11-08-petrichor.mp4",
     "verified": "merriam-webster.com",
-    "metricool_uuid": "-4125319183660138042"
+    "metricool_uuid": "-4125319183660138042",
+    "instagram_url": "https://www.instagram.com/reel/DffRUyrAMG0/",
+    "facebook_url": "https://facebook.com/reel/1480985623945029",
+    "published_at": "2026-11-08T11:15:00-06:00",
+    "publish_note": "Scheduled 10:00 auto-publish (uuid -4125319183660138042) ERRORED on Instagram (Metricool: 'Unknown.'). Went live via re-post at 11:15 on Instagram (uuid -2865005195425199577) and 13:10 as Facebook Reel (uuid 8379870520046012311).",
+    "metricool_uuid_live_instagram": "-2865005195425199577",
+    "metricool_uuid_live_facebook": "8379870520046012311"
   },
   {
     "word": "flabbergasted",
