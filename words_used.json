@@ -163,7 +163,7 @@
     "word": "gallivant",
     "date": "2026-11-15",
     "number": 11,
-    "posted": "scheduled",
+    "posted": "published",
     "hook_style": "tag",
     "hook": "Tag the friend whose Instagram is just this, every weekend ✈️",
     "caption": "Tag the friend whose Instagram is just this, every weekend ✈️\n\nGuess before the reveal 👀 A, B or C?\n\nFollow @canyouguessthisword for tomorrow's word\n\n#wordoftheday #vocabulary #englishwords #learnenglish #travel",
@@ -171,7 +171,10 @@
     "publish_at": "2026-11-15T10:00:00-06:00",
     "file": "videos/wotd-2026-11-15-gallivant.mp4",
     "verified": "merriam-webster.com",
-    "metricool_uuid": "-2058788851792264244"
+    "metricool_uuid": "-2058788851792264244",
+    "instagram_url": "https://www.instagram.com/reel/DfxKoPNgk8P/",
+    "facebook_url": "https://facebook.com/reel/1811533903432610",
+    "published_at": "2026-11-15T10:04:00-06:00"
   },
   {
     "word": "lackadaisical",
