@@ -19,8 +19,8 @@
     "tiktok": null,
     "score": 14.99,
     "provisional": false,
-    "age_days": 8,
-    "updated": "2026-11-16T04:45:00Z"
+    "age_days": 9,
+    "updated": "2026-11-17T04:45:00Z"
   },
   {
     "word": "petrichor",
@@ -49,8 +49,8 @@
     "tiktok": null,
     "score": 10.3,
     "provisional": false,
-    "age_days": 7,
-    "updated": "2026-11-16T04:45:00Z"
+    "age_days": 8,
+    "updated": "2026-11-17T04:45:00Z"
   },
   {
     "word": "flabbergasted",
@@ -79,8 +79,8 @@
     "tiktok": null,
     "score": 8.83,
     "provisional": false,
-    "age_days": 6,
-    "updated": "2026-11-16T04:45:00Z"
+    "age_days": 7,
+    "updated": "2026-11-17T04:45:00Z"
   },
   {
     "word": "bamboozle",
@@ -109,8 +109,8 @@
     "tiktok": null,
     "score": 15.66,
     "provisional": false,
-    "age_days": 5,
-    "updated": "2026-11-16T04:45:00Z"
+    "age_days": 6,
+    "updated": "2026-11-17T04:45:00Z"
   },
   {
     "word": "skedaddle",
@@ -139,8 +139,8 @@
     "tiktok": null,
     "score": 7.82,
     "provisional": false,
-    "age_days": 4,
-    "updated": "2026-11-16T04:45:00Z"
+    "age_days": 5,
+    "updated": "2026-11-17T04:45:00Z"
   },
   {
     "word": "shenanigans",
@@ -169,8 +169,8 @@
     "tiktok": null,
     "score": 8.13,
     "provisional": false,
-    "age_days": 3,
-    "updated": "2026-11-16T04:45:00Z"
+    "age_days": 4,
+    "updated": "2026-11-17T04:45:00Z"
   },
   {
     "word": "dillydally",
@@ -190,7 +190,7 @@
     },
     "facebook": {
       "url": "https://facebook.com/reel/28316324794706952",
-      "views": 77,
+      "views": 78,
       "reach": 0,
       "likes": 0,
       "avg_watch_time": 3.0,
@@ -198,9 +198,9 @@
     },
     "tiktok": null,
     "score": 8.98,
-    "provisional": true,
-    "age_days": 2,
-    "updated": "2026-11-16T04:45:00Z"
+    "provisional": false,
+    "age_days": 3,
+    "updated": "2026-11-17T04:45:00Z"
   },
   {
     "word": "persnickety",
@@ -220,17 +220,17 @@
     },
     "facebook": {
       "url": "https://facebook.com/reel/1111958038142745",
-      "views": 184,
+      "views": 192,
       "reach": 0,
       "likes": 1,
-      "avg_watch_time": 1.0,
+      "avg_watch_time": 2.0,
       "note": "Metricool FB reels: reach reported 0; comments/shares not exposed; not in score"
     },
     "tiktok": null,
     "score": 25.66,
     "provisional": true,
-    "age_days": 1,
-    "updated": "2026-11-16T04:45:00Z"
+    "age_days": 2,
+    "updated": "2026-11-17T04:45:00Z"
   },
   {
     "word": "gallivant",
@@ -250,13 +250,45 @@
     },
     "facebook": {
       "url": "https://facebook.com/reel/1811533903432610",
-      "views": null,
-      "note": "not yet in Metricool FB reels analytics"
+      "views": 0,
+      "note": "not yet in Metricool FB reels analytics",
+      "likes": 0,
+      "avg_watch_time": 0.0
     },
     "tiktok": null,
     "score": 100.0,
     "provisional": true,
+    "age_days": 1,
+    "updated": "2026-11-17T04:45:00Z"
+  },
+  {
+    "word": "lackadaisical",
+    "date": "2026-11-16",
+    "hook_style": "surprise",
+    "instagram": {
+      "url": "https://www.instagram.com/reel/DfzvkyAklWh/",
+      "views": null,
+      "reach": null,
+      "likes": null,
+      "comments": null,
+      "shares": null,
+      "saves": null,
+      "follows": null,
+      "avg_watch_time": null,
+      "note": "published per Metricool planner; IG reels analytics not yet synced"
+    },
+    "facebook": {
+      "url": "https://facebook.com/reel/1661268432106267",
+      "views": 0,
+      "reach": 0,
+      "likes": 0,
+      "avg_watch_time": 0.0,
+      "note": "Metricool FB reels: reach reported 0; comments/shares not exposed; not in score"
+    },
+    "tiktok": null,
+    "score": null,
+    "provisional": true,
     "age_days": 0,
-    "updated": "2026-11-16T04:45:00Z"
+    "updated": "2026-11-17T04:45:00Z"
   }
 ]
