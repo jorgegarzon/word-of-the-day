@@ -192,13 +192,13 @@
     "instagram_url": "https://www.instagram.com/reel/DfzvkyAklWh/",
     "facebook_url": "https://facebook.com/reel/1661268432106267",
     "published_at": "2026-11-16T10:04:00-06:00",
-    "publish_note": "Metricool planner: PUBLISHED on IG+FB; FB reel in analytics; IG reels analytics not yet synced at 2026-11-17 run"
+    "publish_note": "Metricool planner: PUBLISHED on IG+FB; IG reel in analytics as of 2026-11-18 run"
   },
   {
     "word": "cantankerous",
     "date": "2026-11-17",
     "number": 13,
-    "posted": "scheduled",
+    "posted": "published",
     "hook_style": "challenge",
     "hook": "I bet you know someone exactly like this and didn't know the word 👀",
     "caption": "I bet you know someone exactly like this and didn't know the word 👀\n\nGuess before the reveal 👀 A, B or C?\n\nFollow @canyouguessthisword for tomorrow's word\n\n#wordoftheday #vocabulary #englishwords #learnenglish #coffee",
@@ -206,7 +206,10 @@
     "publish_at": "2026-11-17T10:00:00-06:00",
     "file": "videos/wotd-2026-11-17-cantankerous.mp4",
     "verified": "merriam-webster.com",
-    "metricool_uuid": "-8677404057466027544"
+    "metricool_uuid": "-8677404057466027544",
+    "instagram_url": "https://www.instagram.com/reel/Df2UXlyESZ5/",
+    "facebook_url": "https://facebook.com/reel/1827879128456843",
+    "published_at": "2026-11-17T10:05:00-06:00"
   },
   {
     "word": "malarkey",
