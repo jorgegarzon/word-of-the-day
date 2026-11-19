@@ -1,9 +1,16 @@
 # Daily run: Word of the Day video (@canyouguessthisword)
 
 > **Current mode (since 2026-11-07): pre-scheduled batch.** All posts from 2026-11-08 to 2026-12-31 were
-> rendered in one batch (`batch/2026-nov-dec.py`) and scheduled in Metricool to auto-publish at
-> **10:00am Mexico City time** every day. There is no daily generation task right now. The steps
-> below describe how to make one post, and are reused to build the next batch.
+> rendered in one batch (`batch/2026-nov-dec.py`) and scheduled in Metricool. There is no daily
+> generation task right now. The steps below describe how to make one post, and are reused to build
+> the next batch.
+>
+> **v2 since 2026-11-20** (see `docs/2026-11-19-v2-rerender.md` for the data and reasons):
+> - Format: 6.6s loop rendered with `render.py --short`. The timing is set in the word JSON (`duration`, `options_at`,
+>   `countdown_at`, `reveal`, `sentence_at`) and the on-screen hook in `screen_hook`. See `batch/2026-nov-dec-v2.py`.
+> - Hooks: about 2/3 `surprise` in the pattern "This sounds like X. It's not 🦕". Every hook ends with an emoji.
+> - Times: weekdays 10:00 Mexico City; Saturday and Sunday **12:00 MST (13:00 Mexico City)**.
+> - These v2 rules override the 15s format, the hook rotation and the 06:00 time described below.
 
 
 The scheduled task follows these steps every morning (starts 5:39am New York time; the post goes
