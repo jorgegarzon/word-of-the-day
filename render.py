@@ -189,6 +189,74 @@ def build(w):
         return fr.img
     return frame, bg
 
+EMOJI = "/usr/share/fonts/truetype/noto/NotoColorEmoji.ttf"
+def is_emoji(ch): return ord(ch) >= 0x2190 and not ch.isalnum()
+
+def emoji_img(e, size):
+    f = ImageFont.truetype(EMOJI, 109); im = Image.new("RGBA", (160, 160), (0, 0, 0, 0))
+    ImageDraw.Draw(im).text((0, 0), e, font=f, embedded_color=True)
+    im = im.crop(im.getbbox() or (0, 0, 1, 1)); r = size / im.height
+    return im.resize((max(1, int(im.width * r)), size), Image.LANCZOS)
+
+def rich_lines(s, f, maxw, esize):
+    """split hook into text + trailing emoji cluster; wrap the text part"""
+    i = len(s)
+    while i > 0 and (is_emoji(s[i - 1]) or s[i - 1] in "\ufe0f\u200d "): i -= 1
+    txt, emo = s[:i].strip(), s[i:].strip()
+    parts = [p + ("." if k < len(txt.split(". ")) - 1 else "") for k, p in enumerate(txt.split(". "))]
+    lines = parts if all(f.getlength(p) <= maxw - esize * 1.2 for p in parts) else wrap(txt, f, maxw)
+    if emo and f.getlength(lines[-1]) + esize * 1.2 > maxw: lines.append("")
+    return lines, emo
+
+def build_short(w, dur):
+    """2-second loop: word + options visible on frame 1, answer revealed at ~45%."""
+    h = int(hashlib.md5(w["word"].encode()).hexdigest(), 16)
+    ACC, top, bot = THEMES[h % len(THEMES)]
+    bg = BG(top, bot)
+    word = w["word"]; ws = fit(word, EXTRA, 170, W - 140); fw = F(EXTRA, ws)
+    opts, ans = w["options"], w["answer"]
+    fo = F(REG, 50); fol = F(BOLD, 54)
+    T_REV = dur * 0.45
+    fh = F(EXTRA, 58); hook = w.get("screen_hook", "")
+    hl, emo = rich_lines(hook, fh, W - 160, 64) if hook else ([], "")
+    eim = emoji_img(emo, 64) if emo else None
+    def draw_hook(d, a, b):
+        for k, ln in enumerate(hl):
+            lw = d.textlength(ln, font=fh)
+            extra = (eim.width + 16) if (eim and k == len(hl) - 1) else 0
+            x = (a - lw - extra) / 2; y = 10 + k * 78
+            d.text((x, y), ln, font=fh, fill=CREAM)
+            if extra: d._image.alpha_composite(eim, (int(x + lw + 16), int(y + 8)))
+    def frame(t):
+        fr = Frame(bg(t * 7.5 / dur))
+        if hl: fr.el(W - 80, 30 + 78 * len(hl), draw_hook, W / 2, 330 + 39 * (len(hl) - 1))
+        pop = 1 + 0.10 * math.sin(math.pi * clamp((t - T_REV) / 0.3)) if T_REV <= t <= T_REV + 0.3 else 1
+        fr.el(W, ws * 1.5, lambda d, a, b: ctext(d, a, b, word, fw, CREAM), W / 2, 640, 1, pop)
+        fr.el(W, 80, lambda d, a, b: ctext(d, a, b, f"{w['pronunciation']}  ·  {w['part_of_speech']}", F(REG, 44), SOFT), W / 2, 790)
+        revealed = t >= T_REV
+        if not revealed:
+            p = t / T_REV
+            fr.el(920, 16, lambda d, a, b: (d.rounded_rectangle([0, 0, a - 1, b - 1], 8, fill=(255, 255, 255, 50)),
+                  d.rounded_rectangle([0, 0, max(16, (a - 1) * (1 - p)), b - 1], 8, fill=ACC)), W / 2, 870)
+        for i, o in enumerate(opts):
+            is_ans = i == ans
+            col = (GOOD + (235,)) if (revealed and is_ans) else (255, 255, 255, 34)
+            txtc = DARK if (revealed and is_ans) else CREAM
+            dim = (1 - 0.7 * eo((t - T_REV) / 0.2)) if (revealed and not is_ans) else 1.0
+            lines = wrap(o, fo, 760); hh = 70 + 58 * len(lines)
+            def draw_opt(d, a, b, i=i, col=col, txtc=txtc, lines=lines):
+                d.rounded_rectangle([0, 0, a - 1, b - 1], 34, fill=col)
+                d.text((40, b / 2 - fol.size * 0.65), "ABC"[i], font=fol, fill=ACC if col[3] < 100 else DARK)
+                for k, ln in enumerate(lines):
+                    d.text((115, (b - 58 * len(lines)) / 2 + 58 * k - 6), ln, font=fo, fill=txtc)
+            sc = 1 + 0.06 * math.sin(math.pi * clamp((t - T_REV) / 0.3)) if (revealed and is_ans) else 1.0
+            fr.el(920, hh, draw_opt, W / 2, 960 + i * 175, dim, sc)
+        if revealed:
+            fr.el(W - 120, 90, lambda d, a, b: ctext(d, a, b, f"It's {'ABC'[ans]}! Did you get it?", F(BOLD, 52), ACC), W / 2, 1490,
+                  eo((t - T_REV) / 0.2))
+        return fr.img
+    return frame, bg
+
 def make_music(dur, path, sr=44100):
     t = np.arange(int(dur * sr)) / sr; out = np.zeros_like(t)
     chords = [[261.63, 329.63, 392.0, 493.88], [220.0, 261.63, 329.63, 392.0], [174.61, 220.0, 261.63, 329.63], [196.0, 246.94, 293.66, 392.0]]
@@ -212,9 +280,14 @@ def main():
     args = [a for a in sys.argv[1:] if not a.startswith("--")]
     w = json.load(open(args[0])); out = args[1]; narr = args[2] if len(args) > 2 else None
     work = os.path.join(os.path.dirname(os.path.abspath(out)), "_work"); os.makedirs(work, exist_ok=True)
-    frame, bg = build(w)
+    global DUR
+    if "--short" in sys.argv:
+        DUR = float(w.get("duration", 2.0)); frame, bg = build_short(w, DUR)
+        times = [0.0, DUR * 0.3, DUR * 0.5, DUR - 1 / FPS]
+    else:
+        frame, bg = build(w); times = [0.0, 2.0, 5.5, 7.6, 10.5, 13.8, 14.97]
     if "--frames" in sys.argv:
-        for i, ts in enumerate([0.0, 2.0, 5.5, 7.6, 10.5, 13.8, 14.97]):
+        for i, ts in enumerate(times):
             frame(ts).convert("RGB").save(f"{work}/f{i}.jpg", quality=88)
         return
     n = int(DUR * FPS); vid = f"{work}/video.part.mp4"
