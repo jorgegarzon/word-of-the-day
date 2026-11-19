@@ -296,7 +296,7 @@ def main():
     global DUR
     if "--short" in sys.argv:
         DUR = float(w.get("duration", 2.0)); frame, bg = build_short(w, DUR)
-        times = [0.0, 0.5, 1.3, DUR - 1 / FPS]
+        times = [0.0, 1.0, 1.8, 2.8, DUR - 1 / FPS]
     else:
         frame, bg = build(w); times = [0.0, 2.0, 5.5, 7.6, 10.5, 13.8, 14.97]
     if "--frames" in sys.argv:
