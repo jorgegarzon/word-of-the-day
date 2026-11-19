@@ -229,7 +229,18 @@ def build_short(w, dur):
             if extra: d._image.alpha_composite(eim, (int(x + lw + 16), int(y + 8)))
     def frame(t):
         fr = Frame(bg(t * 7.5 / dur))
-        if hl: fr.el(W - 80, 30 + 78 * len(hl), draw_hook, W / 2, 280 + 39 * (len(hl) - 1))
+        T_CTA = float(w.get("cta_at", dur - 0.3))
+        hv = 1 - eo((t - (T_CTA - 0.1)) / 0.1) if t >= T_CTA - 0.1 else 1
+        if hl: fr.el(W - 80, 30 + 78 * len(hl), draw_hook, W / 2, 280 + 39 * (len(hl) - 1), hv)
+        if t >= T_CTA:
+            fc = F(EXTRA, 52); cta = w.get("cta", "Follow for your word of the day"); bell = emoji_img("🔔", 56)
+            def draw_cta(d, a, b):
+                d.rounded_rectangle([0, 0, a - 1, b - 1], b / 2, fill=ACC)
+                tw = d.textlength(cta, font=fc); x = (a - tw - bell.width - 16) / 2
+                d.text((x, (b - fc.size * 1.25) / 2), cta, font=fc, fill=DARK)
+                d._image.alpha_composite(bell, (int(x + tw + 16), int((b - bell.height) / 2)))
+            sc = max(0.01, eb((t - T_CTA) / 0.25))
+            fr.el(980, 120, draw_cta, W / 2, 300, 1, sc)
         pop = 1 + 0.10 * math.sin(math.pi * clamp((t - T_REV) / 0.3)) if T_REV <= t <= T_REV + 0.3 else 1
         fr.el(W, ws * 1.5, lambda d, a, b: ctext(d, a, b, word, fw, CREAM), W / 2, 580, 1, pop)
         fr.el(W, 80, lambda d, a, b: ctext(d, a, b, f"{w['pronunciation']}  ·  {w['part_of_speech']}", F(REG, 44), SOFT), W / 2, 730)
@@ -296,7 +307,7 @@ def main():
     global DUR
     if "--short" in sys.argv:
         DUR = float(w.get("duration", 2.0)); frame, bg = build_short(w, DUR)
-        times = [0.0, 1.0, 1.8, 2.8, DUR - 1 / FPS]
+        times = [0.0, 1.0, 1.8, 2.8, 3.1, DUR - 1 / FPS]
     else:
         frame, bg = build(w); times = [0.0, 2.0, 5.5, 7.6, 10.5, 13.8, 14.97]
     if "--frames" in sys.argv:
