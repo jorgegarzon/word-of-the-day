@@ -245,11 +245,14 @@ def build_short(w, dur):
         fr.el(W, ws * 1.5, lambda d, a, b: ctext(d, a, b, word, fw, CREAM), W / 2, 580, 1, pop)
         fr.el(W, 80, lambda d, a, b: ctext(d, a, b, f"{w['pronunciation']}  ·  {w['part_of_speech']}", F(REG, 44), SOFT), W / 2, 730)
         revealed = t >= T_REV
-        if not revealed:
-            p = t / T_REV
-            fr.el(920, 16, lambda d, a, b: (d.rounded_rectangle([0, 0, a - 1, b - 1], 8, fill=(255, 255, 255, 50)),
-                  d.rounded_rectangle([0, 0, max(16, (a - 1) * (1 - p)), b - 1], 8, fill=ACC)), W / 2, 810)
+        OPT_AT = w.get("options_at", [0.4, 0.8, 1.2]); CNT_AT = w.get("countdown_at", [1.4, 1.6, 1.8])
+        for k, c0 in enumerate(CNT_AT):
+            c1 = CNT_AT[k + 1] if k + 1 < len(CNT_AT) else c0 + 0.2
+            if c0 <= t < c1:
+                fr.el(300, 300, lambda d, a, b, k=k: ctext(d, a, b, str(len(CNT_AT) - k), F(EXTRA, 220), ACC),
+                      W / 2, 1460, 1, max(0.01, eb((t - c0) / 0.15)))
         for i, o in enumerate(opts):
+            if t < OPT_AT[i]: continue
             is_ans = i == ans
             col = (GOOD + (235,)) if (revealed and is_ans) else (255, 255, 255, 34)
             txtc = DARK if (revealed and is_ans) else CREAM
@@ -260,9 +263,10 @@ def build_short(w, dur):
                 d.text((40, b / 2 - fol.size * 0.65), "ABC"[i], font=fol, fill=ACC if col[3] < 100 else DARK)
                 for k, ln in enumerate(lines):
                     d.text((115, (b - 58 * len(lines)) / 2 + 58 * k - 6), ln, font=fo, fill=txtc)
-            sc = 1 + 0.06 * math.sin(math.pi * clamp((t - T_REV) / 0.3)) if (revealed and is_ans) else 1.0
+            sc = 1 + 0.08 * math.sin(math.pi * clamp((t - T_REV) / 0.3)) if (revealed and is_ans) else max(0.01, eb((t - OPT_AT[i]) / 0.2))
             fr.el(920, hh, draw_opt, W / 2, 900 + i * 175, dim, sc)
-        ex = eo((t - T_REV - 0.1) / 0.2) if t >= T_REV + 0.1 else 0
+        T_EX = float(w.get("sentence_at", T_REV + 0.1))
+        ex = eo((t - T_EX) / 0.2) if t >= T_EX else 0
         if ex:
             fi = F(ITAL, 50); fb = F(BOLD, 50); lines = wrap("“" + w["example"] + "”", fi, 900)
             def draw_ex(d, a, b):
@@ -307,7 +311,7 @@ def main():
     global DUR
     if "--short" in sys.argv:
         DUR = float(w.get("duration", 2.0)); frame, bg = build_short(w, DUR)
-        times = [0.0, 1.0, 1.8, 2.8, 3.1, DUR - 1 / FPS]
+        times = [0.3, 1.3, 1.7, 2.3, 2.8, 3.1]
     else:
         frame, bg = build(w); times = [0.0, 2.0, 5.5, 7.6, 10.5, 13.8, 14.97]
     if "--frames" in sys.argv:
