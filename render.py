@@ -247,7 +247,7 @@ def build_short(w, dur):
         revealed = t >= T_REV
         OPT_AT = w.get("options_at", [0.4, 0.8, 1.2]); CNT_AT = w.get("countdown_at", [1.4, 1.6, 1.8])
         for k, c0 in enumerate(CNT_AT):
-            c1 = CNT_AT[k + 1] if k + 1 < len(CNT_AT) else c0 + 0.2
+            c1 = CNT_AT[k + 1] if k + 1 < len(CNT_AT) else min(T_REV, c0 + (CNT_AT[1] - CNT_AT[0] if len(CNT_AT) > 1 else 0.5))
             if c0 <= t < c1:
                 fr.el(300, 300, lambda d, a, b, k=k: ctext(d, a, b, str(len(CNT_AT) - k), F(EXTRA, 220), ACC),
                       W / 2, 1460, 1, max(0.01, eb((t - c0) / 0.15)))
@@ -311,7 +311,7 @@ def main():
     global DUR
     if "--short" in sys.argv:
         DUR = float(w.get("duration", 2.0)); frame, bg = build_short(w, DUR)
-        times = [0.3, 1.3, 1.7, 2.3, 2.8, 3.1]
+        times = [0.3, 1.7, 2.7, 3.6, 4.0, DUR - 0.1]
     else:
         frame, bg = build(w); times = [0.0, 2.0, 5.5, 7.6, 10.5, 13.8, 14.97]
     if "--frames" in sys.argv:
