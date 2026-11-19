@@ -304,6 +304,18 @@ def make_music(dur, path, sr=44100):
         wf.setnchannels(2); wf.setsampwidth(2); wf.setframerate(sr)
         wf.writeframes((np.stack([out, out], 1) * 32767).astype(np.int16).tobytes())
 
+def add_ticks(path, times, sr=44100):
+    """mix a short clock tick into the music at each time (countdown)"""
+    with wave.open(path) as wf: a = np.frombuffer(wf.readframes(wf.getnframes()), np.int16).reshape(-1, 2).astype(np.float32) / 32767
+    tt = np.arange(int(0.06 * sr)) / sr
+    tick = (np.sin(2 * np.pi * 1900 * tt) * 0.6 + np.sin(2 * np.pi * 950 * tt) * 0.4) * np.exp(-tt * 90) * 0.55
+    for t0 in times:
+        i = int(t0 * sr); n = min(len(tick), len(a) - i)
+        if n > 0: a[i:i + n] += tick[:n, None]
+    a = np.clip(a, -1, 1)
+    with wave.open(path, "wb") as wf:
+        wf.setnchannels(2); wf.setsampwidth(2); wf.setframerate(sr); wf.writeframes((a * 32767).astype(np.int16).tobytes())
+
 def main():
     args = [a for a in sys.argv[1:] if not a.startswith("--")]
     w = json.load(open(args[0])); out = args[1]; narr = args[2] if len(args) > 2 else None
@@ -325,7 +337,9 @@ def main():
     p.stdin.close()
     if p.wait(): raise SystemExit("video encode failed")
     os.replace(vid, f"{work}/video.mp4")
-    make_music(DUR, f"{work}/music.wav"); tmp = out[:-4] + ".part.mp4"
+    make_music(DUR, f"{work}/music.wav")
+    if "--short" in sys.argv: add_ticks(f"{work}/music.wav", w.get("countdown_at", [1.4, 1.6, 1.8]))
+    tmp = out[:-4] + ".part.mp4"
     if narr:
         cmd = ["ffmpeg", "-y", "-loglevel", "error", "-i", f"{work}/video.mp4", "-i", f"{work}/music.wav", "-i", narr,
                "-filter_complex", "[1:a]volume=0.3[m];[2:a]volume=1.4[n];[m][n]amix=inputs=2:duration=first:normalize=0[a]",
