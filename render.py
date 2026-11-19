@@ -209,14 +209,14 @@ def rich_lines(s, f, maxw, esize):
     return lines, emo
 
 def build_short(w, dur):
-    """2-second loop: word + options visible on frame 1, answer revealed at ~45%."""
+    """Short loop: word + options visible on frame 1, answer revealed at `reveal` s, then the example."""
     h = int(hashlib.md5(w["word"].encode()).hexdigest(), 16)
     ACC, top, bot = THEMES[h % len(THEMES)]
     bg = BG(top, bot)
     word = w["word"]; ws = fit(word, EXTRA, 170, W - 140); fw = F(EXTRA, ws)
     opts, ans = w["options"], w["answer"]
     fo = F(REG, 50); fol = F(BOLD, 54)
-    T_REV = dur * 0.45
+    T_REV = float(w.get("reveal", 0.9))
     fh = F(EXTRA, 58); hook = w.get("screen_hook", "")
     hl, emo = rich_lines(hook, fh, W - 160, 64) if hook else ([], "")
     eim = emoji_img(emo, 64) if emo else None
@@ -229,15 +229,15 @@ def build_short(w, dur):
             if extra: d._image.alpha_composite(eim, (int(x + lw + 16), int(y + 8)))
     def frame(t):
         fr = Frame(bg(t * 7.5 / dur))
-        if hl: fr.el(W - 80, 30 + 78 * len(hl), draw_hook, W / 2, 330 + 39 * (len(hl) - 1))
+        if hl: fr.el(W - 80, 30 + 78 * len(hl), draw_hook, W / 2, 280 + 39 * (len(hl) - 1))
         pop = 1 + 0.10 * math.sin(math.pi * clamp((t - T_REV) / 0.3)) if T_REV <= t <= T_REV + 0.3 else 1
-        fr.el(W, ws * 1.5, lambda d, a, b: ctext(d, a, b, word, fw, CREAM), W / 2, 640, 1, pop)
-        fr.el(W, 80, lambda d, a, b: ctext(d, a, b, f"{w['pronunciation']}  ·  {w['part_of_speech']}", F(REG, 44), SOFT), W / 2, 790)
+        fr.el(W, ws * 1.5, lambda d, a, b: ctext(d, a, b, word, fw, CREAM), W / 2, 580, 1, pop)
+        fr.el(W, 80, lambda d, a, b: ctext(d, a, b, f"{w['pronunciation']}  ·  {w['part_of_speech']}", F(REG, 44), SOFT), W / 2, 730)
         revealed = t >= T_REV
         if not revealed:
             p = t / T_REV
             fr.el(920, 16, lambda d, a, b: (d.rounded_rectangle([0, 0, a - 1, b - 1], 8, fill=(255, 255, 255, 50)),
-                  d.rounded_rectangle([0, 0, max(16, (a - 1) * (1 - p)), b - 1], 8, fill=ACC)), W / 2, 870)
+                  d.rounded_rectangle([0, 0, max(16, (a - 1) * (1 - p)), b - 1], 8, fill=ACC)), W / 2, 810)
         for i, o in enumerate(opts):
             is_ans = i == ans
             col = (GOOD + (235,)) if (revealed and is_ans) else (255, 255, 255, 34)
@@ -250,10 +250,23 @@ def build_short(w, dur):
                 for k, ln in enumerate(lines):
                     d.text((115, (b - 58 * len(lines)) / 2 + 58 * k - 6), ln, font=fo, fill=txtc)
             sc = 1 + 0.06 * math.sin(math.pi * clamp((t - T_REV) / 0.3)) if (revealed and is_ans) else 1.0
-            fr.el(920, hh, draw_opt, W / 2, 960 + i * 175, dim, sc)
-        if revealed:
-            fr.el(W - 120, 90, lambda d, a, b: ctext(d, a, b, f"It's {'ABC'[ans]}! Did you get it?", F(BOLD, 52), ACC), W / 2, 1490,
-                  eo((t - T_REV) / 0.2))
+            fr.el(920, hh, draw_opt, W / 2, 900 + i * 175, dim, sc)
+        ex = eo((t - T_REV - 0.1) / 0.2) if t >= T_REV + 0.1 else 0
+        if ex:
+            fi = F(ITAL, 50); fb = F(BOLD, 50); lines = wrap("“" + w["example"] + "”", fi, 900)
+            def draw_ex(d, a, b):
+                d.rounded_rectangle([0, 0, a - 1, b - 1], 36, fill=(255, 255, 255, 30))
+                for k, ln in enumerate(lines):
+                    x = (a - d.textlength(ln, font=fi)) / 2; y = 28 + k * 68
+                    j = ln.lower().find(word.lower())
+                    if j >= 0:
+                        pre, mid, post = ln[:j], ln[j:j + len(word)], ln[j + len(word):]
+                        d.text((x, y), pre, font=fi, fill=CREAM); x += d.textlength(pre, font=fi)
+                        d.text((x, y), mid, font=fb, fill=ACC); x += d.textlength(mid, font=fb)
+                        d.text((x, y), post, font=fi, fill=CREAM)
+                    else: d.text((x, y), ln, font=fi, fill=CREAM)
+            hb = 56 + 68 * len(lines)
+            fr.el(980, hb, draw_ex, W / 2, 1340 + hb / 2 + (1 - ex) * 30, ex)
         return fr.img
     return frame, bg
 
@@ -283,7 +296,7 @@ def main():
     global DUR
     if "--short" in sys.argv:
         DUR = float(w.get("duration", 2.0)); frame, bg = build_short(w, DUR)
-        times = [0.0, DUR * 0.3, DUR * 0.5, DUR - 1 / FPS]
+        times = [0.0, 0.5, 1.3, DUR - 1 / FPS]
     else:
         frame, bg = build(w); times = [0.0, 2.0, 5.5, 7.6, 10.5, 13.8, 14.97]
     if "--frames" in sys.argv:
