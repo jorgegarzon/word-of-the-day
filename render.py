@@ -204,7 +204,9 @@ def rich_lines(s, f, maxw, esize):
     while i > 0 and (is_emoji(s[i - 1]) or s[i - 1] in "\ufe0f\u200d "): i -= 1
     txt, emo = s[:i].strip(), s[i:].strip()
     parts = [p + ("." if k < len(txt.split(". ")) - 1 else "") for k, p in enumerate(txt.split(". "))]
-    lines = parts if all(f.getlength(p) <= maxw - esize * 1.2 for p in parts) else wrap(txt, f, maxw)
+    if all(f.getlength(p) <= maxw for p in parts[:-1]) and f.getlength(parts[-1]) <= maxw - esize * 1.2:
+        lines = parts
+    else: lines = wrap(txt, f, maxw)
     if emo and f.getlength(lines[-1]) + esize * 1.2 > maxw: lines.append("")
     return lines, emo
 
@@ -217,8 +219,12 @@ def build_short(w, dur):
     opts, ans = w["options"], w["answer"]
     fo = F(REG, 50); fol = F(BOLD, 54)
     T_REV = float(w.get("reveal", 0.9))
-    fh = F(EXTRA, 58); hook = w.get("screen_hook", "")
-    hl, emo = rich_lines(hook, fh, W - 160, 64) if hook else ([], "")
+    hook = w.get("screen_hook", ""); hl, emo = [], ""
+    for size in range(58, 42, -2):  # shrink until each sentence fits on its own line
+        fh = F(EXTRA, size)
+        if not hook: break
+        hl, emo = rich_lines(hook, fh, W - 120, 64)
+        if len(hook.split(". ")) == 1 or hl[0].endswith("."): break
     eim = emoji_img(emo, 64) if emo else None
     def draw_hook(d, a, b):
         for k, ln in enumerate(hl):
@@ -266,11 +272,13 @@ def build_short(w, dur):
         T_EX = float(w.get("sentence_at", T_REV + 0.1))
         ex = eo((t - T_EX) / 0.2) if t >= T_EX else 0
         if ex:
-            fi = F(ITAL, 50); fb = F(BOLD, 50); lines = wrap("“" + w["example"] + "”", fi, 900)
+            for es in (50, 46, 42):
+                fi = F(ITAL, es); fb = F(BOLD, es); lines = wrap("“" + w["example"] + "”", fi, 900)
+                if len(lines) <= 2: break
             def draw_ex(d, a, b):
                 d.rounded_rectangle([0, 0, a - 1, b - 1], 36, fill=(255, 255, 255, 30))
                 for k, ln in enumerate(lines):
-                    x = (a - d.textlength(ln, font=fi)) / 2; y = 28 + k * 68
+                    x = (a - d.textlength(ln, font=fi)) / 2; y = 28 + k * 68 * fi.size / 50
                     j = ln.lower().find(word.lower())
                     if j >= 0:
                         pre, mid, post = ln[:j], ln[j:j + len(word)], ln[j + len(word):]
