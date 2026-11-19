@@ -71,8 +71,8 @@ Follow @canyouguessthisword for tomorrow's word
    surprise, continuing from the last style in `words_used.json`.
 2. Once every style has at least 4 posts with metrics, switch to: 60% of days the style with the
    best average score, 40% of days rotate through the others (keep testing; tastes change).
-3. Score per post = (comments + shares + saves) per 1,000 views, plus 0.5 × views/1,000.
-   Ignore posts younger than 3 days (numbers still moving).
+3. Score per post: defined in `MEASURE.md` step 2 (it excludes our own first comment). Ignore posts
+   marked `provisional` (younger than 3 days) or `low_sample` (fewer than 50 Instagram views).
 
 First comment: a funny sentence using the word "from us", so the comments aren't empty.
 

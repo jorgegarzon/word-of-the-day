@@ -3,6 +3,7 @@
     "word": "discombobulated",
     "date": "2026-11-07",
     "hook_style": "tag",
+    "format": "v1-15s",
     "instagram": {
       "url": "https://www.instagram.com/reel/DfdrqAliZiF/",
       "views": 134,
@@ -13,12 +14,16 @@
       "saves": 0,
       "follows": null,
       "avg_watch_time": 5.887,
-      "note": "follows not available per reel in Metricool; comment likely our first comment"
+      "note": "follows not available per reel in Metricool; comments_ext excludes our own first comment",
+      "view_rate": 24.1,
+      "skip_rate": 75.9,
+      "comments_ext": 0
     },
     "facebook": null,
     "tiktok": null,
-    "score": 14.99,
+    "score": 16.27,
     "provisional": false,
+    "low_sample": false,
     "age_days": 11,
     "updated": "2026-11-19T04:45:00Z"
   },
@@ -26,6 +31,7 @@
     "word": "petrichor",
     "date": "2026-11-08",
     "hook_style": "surprise",
+    "format": "v1-15s",
     "instagram": {
       "url": "https://www.instagram.com/reel/DffRUyrAMG0/",
       "views": 196,
@@ -36,7 +42,10 @@
       "saves": 1,
       "follows": null,
       "avg_watch_time": 5.945,
-      "note": "follows not available per reel in Metricool; comment likely our first comment"
+      "note": "follows not available per reel in Metricool; comments_ext excludes our own first comment",
+      "view_rate": 15.6,
+      "skip_rate": 84.4,
+      "comments_ext": 0
     },
     "facebook": {
       "url": "https://facebook.com/reel/1480985623945029",
@@ -47,8 +56,9 @@
       "note": "Metricool FB reels: reach reported 0; comments/shares not exposed; not in score"
     },
     "tiktok": null,
-    "score": 10.3,
+    "score": 12.16,
     "provisional": false,
+    "low_sample": false,
     "age_days": 10,
     "updated": "2026-11-19T04:45:00Z"
   },
@@ -56,6 +66,7 @@
     "word": "flabbergasted",
     "date": "2026-11-09",
     "hook_style": "relatable",
+    "format": "v1-15s",
     "instagram": {
       "url": "https://www.instagram.com/reel/DfhuUInkZbW/",
       "views": 114,
@@ -66,7 +77,10 @@
       "saves": 0,
       "follows": null,
       "avg_watch_time": 2.822,
-      "note": "follows not available per reel in Metricool; comment likely our first comment"
+      "note": "follows not available per reel in Metricool; comments_ext excludes our own first comment",
+      "view_rate": 17.6,
+      "skip_rate": 82.4,
+      "comments_ext": 0
     },
     "facebook": {
       "url": "https://facebook.com/reel/29591240737137275",
@@ -77,8 +91,9 @@
       "note": "Metricool FB reels: reach reported 0; comments/shares not exposed; not in score"
     },
     "tiktok": null,
-    "score": 8.83,
+    "score": 1.14,
     "provisional": false,
+    "low_sample": false,
     "age_days": 9,
     "updated": "2026-11-19T04:45:00Z"
   },
@@ -86,6 +101,7 @@
     "word": "bamboozle",
     "date": "2026-11-10",
     "hook_style": "challenge",
+    "format": "v1-15s",
     "instagram": {
       "url": "https://www.instagram.com/reel/DfkS3QGFa_R/",
       "views": 64,
@@ -96,7 +112,10 @@
       "saves": 0,
       "follows": null,
       "avg_watch_time": 3.414,
-      "note": "follows not available per reel in Metricool; comment likely our first comment"
+      "note": "follows not available per reel in Metricool; comments_ext excludes our own first comment",
+      "view_rate": 24.1,
+      "skip_rate": 75.9,
+      "comments_ext": 0
     },
     "facebook": {
       "url": "https://facebook.com/reel/1892421172127710",
@@ -107,8 +126,9 @@
       "note": "Metricool FB reels: reach reported 0; comments/shares not exposed; not in score"
     },
     "tiktok": null,
-    "score": 15.66,
+    "score": 0.64,
     "provisional": false,
+    "low_sample": false,
     "age_days": 8,
     "updated": "2026-11-19T04:45:00Z"
   },
@@ -116,6 +136,7 @@
     "word": "skedaddle",
     "date": "2026-11-11",
     "hook_style": "tag",
+    "format": "v1-15s",
     "instagram": {
       "url": "https://www.instagram.com/reel/Dfm3tjhDoBm/",
       "views": 129,
@@ -126,7 +147,10 @@
       "saves": 0,
       "follows": null,
       "avg_watch_time": 4.129,
-      "note": "follows not available per reel in Metricool; comment likely our first comment"
+      "note": "follows not available per reel in Metricool; comments_ext excludes our own first comment",
+      "view_rate": 28.1,
+      "skip_rate": 71.9,
+      "comments_ext": 0
     },
     "facebook": {
       "url": "https://facebook.com/reel/2074183769917802",
@@ -137,8 +161,9 @@
       "note": "Metricool FB reels: reach reported 0; comments/shares not exposed; not in score"
     },
     "tiktok": null,
-    "score": 7.82,
+    "score": 1.29,
     "provisional": false,
+    "low_sample": false,
     "age_days": 7,
     "updated": "2026-11-19T04:45:00Z"
   },
@@ -146,6 +171,7 @@
     "word": "shenanigans",
     "date": "2026-11-12",
     "hook_style": "surprise",
+    "format": "v1-15s",
     "instagram": {
       "url": "https://www.instagram.com/reel/DfpcytlAMOL/",
       "views": 124,
@@ -156,7 +182,10 @@
       "saves": 0,
       "follows": null,
       "avg_watch_time": 3.553,
-      "note": "follows not available per reel in Metricool; comment likely our first comment"
+      "note": "follows not available per reel in Metricool; comments_ext excludes our own first comment",
+      "view_rate": 20.2,
+      "skip_rate": 79.8,
+      "comments_ext": 0
     },
     "facebook": {
       "url": "https://facebook.com/reel/1683233100042946",
@@ -167,8 +196,9 @@
       "note": "Metricool FB reels: reach reported 0; comments/shares not exposed; not in score"
     },
     "tiktok": null,
-    "score": 8.13,
+    "score": 1.24,
     "provisional": false,
+    "low_sample": false,
     "age_days": 6,
     "updated": "2026-11-19T04:45:00Z"
   },
@@ -176,6 +206,7 @@
     "word": "dillydally",
     "date": "2026-11-13",
     "hook_style": "relatable",
+    "format": "v1-15s",
     "instagram": {
       "url": "https://www.instagram.com/reel/DfsBMt5DCr1/",
       "views": 112,
@@ -186,7 +217,10 @@
       "saves": 0,
       "follows": null,
       "avg_watch_time": 3.47,
-      "note": "follows not available per reel in Metricool; comment likely our first comment"
+      "note": "follows not available per reel in Metricool; comments_ext excludes our own first comment",
+      "view_rate": 25.7,
+      "skip_rate": 74.3,
+      "comments_ext": 0
     },
     "facebook": {
       "url": "https://facebook.com/reel/28316324794706952",
@@ -197,8 +231,9 @@
       "note": "Metricool FB reels: reach reported 0; comments/shares not exposed; not in score"
     },
     "tiktok": null,
-    "score": 8.98,
+    "score": 1.12,
     "provisional": false,
+    "low_sample": false,
     "age_days": 5,
     "updated": "2026-11-19T04:45:00Z"
   },
@@ -206,6 +241,7 @@
     "word": "persnickety",
     "date": "2026-11-14",
     "hook_style": "relatable",
+    "format": "v1-15s",
     "instagram": {
       "url": "https://www.instagram.com/reel/DfumZ9sAgKq/",
       "views": 39,
@@ -216,7 +252,10 @@
       "saves": 0,
       "follows": null,
       "avg_watch_time": 4.615,
-      "note": "follows not available per reel in Metricool; comment likely our first comment"
+      "note": "follows not available per reel in Metricool; comments_ext excludes our own first comment",
+      "view_rate": 29.0,
+      "skip_rate": 71.0,
+      "comments_ext": 0
     },
     "facebook": {
       "url": "https://facebook.com/reel/1111958038142745",
@@ -227,16 +266,17 @@
       "note": "Metricool FB reels: reach reported 0; comments/shares not exposed; not in score"
     },
     "tiktok": null,
-    "score": 25.66,
+    "score": 0.39,
     "provisional": false,
+    "low_sample": true,
     "age_days": 4,
-    "updated": "2026-11-19T04:45:00Z",
-    "score_note": "score inflated by very low views (only comment is likely our own first comment); not treated as a hit"
+    "updated": "2026-11-19T04:45:00Z"
   },
   {
     "word": "gallivant",
     "date": "2026-11-15",
     "hook_style": "tag",
+    "format": "v1-15s",
     "instagram": {
       "url": "https://www.instagram.com/reel/DfxKoPNgk8P/",
       "views": 23,
@@ -247,7 +287,10 @@
       "saves": 0,
       "follows": null,
       "avg_watch_time": 1.262,
-      "note": "follows not available per reel in Metricool; comment likely our first comment"
+      "note": "follows not available per reel in Metricool; comments_ext excludes our own first comment",
+      "view_rate": 9.1,
+      "skip_rate": 90.9,
+      "comments_ext": 0
     },
     "facebook": {
       "url": "https://facebook.com/reel/1811533903432610",
@@ -258,16 +301,17 @@
       "note": "Metricool FB reels: reach reported 0; comments/shares not exposed; not in score"
     },
     "tiktok": null,
-    "score": 43.49,
+    "score": 0.23,
     "provisional": false,
+    "low_sample": true,
     "age_days": 3,
-    "updated": "2026-11-19T04:45:00Z",
-    "score_note": "score inflated by very low views (only comment is likely our own first comment); not treated as a hit"
+    "updated": "2026-11-19T04:45:00Z"
   },
   {
     "word": "lackadaisical",
     "date": "2026-11-16",
     "hook_style": "surprise",
+    "format": "v1-15s",
     "instagram": {
       "url": "https://www.instagram.com/reel/DfzvkyAklWh/",
       "views": 124,
@@ -278,7 +322,10 @@
       "saves": 0,
       "follows": null,
       "avg_watch_time": 2.388,
-      "note": "follows not available per reel in Metricool; comment likely our first comment"
+      "note": "follows not available per reel in Metricool; comments_ext excludes our own first comment",
+      "view_rate": 11.9,
+      "skip_rate": 88.1,
+      "comments_ext": 0
     },
     "facebook": {
       "url": "https://facebook.com/reel/1661268432106267",
@@ -289,8 +336,9 @@
       "note": "Metricool FB reels: reach reported 0; comments/shares not exposed; not in score"
     },
     "tiktok": null,
-    "score": 8.13,
+    "score": 9.3,
     "provisional": true,
+    "low_sample": false,
     "age_days": 2,
     "updated": "2026-11-19T04:45:00Z"
   },
@@ -298,6 +346,7 @@
     "word": "cantankerous",
     "date": "2026-11-17",
     "hook_style": "challenge",
+    "format": "v1-15s",
     "instagram": {
       "url": "https://www.instagram.com/reel/Df2UXlyESZ5/",
       "views": 112,
@@ -308,7 +357,10 @@
       "saves": 0,
       "follows": null,
       "avg_watch_time": 2.588,
-      "note": "follows not available per reel in Metricool; comment likely our first comment"
+      "note": "follows not available per reel in Metricool; comments_ext excludes our own first comment",
+      "view_rate": 12.7,
+      "skip_rate": 87.3,
+      "comments_ext": 0
     },
     "facebook": {
       "url": "https://facebook.com/reel/1827879128456843",
@@ -319,8 +371,9 @@
       "note": "Metricool FB reels: reach reported 0; comments/shares not exposed; not in score"
     },
     "tiktok": null,
-    "score": 8.98,
+    "score": 1.12,
     "provisional": true,
+    "low_sample": false,
     "age_days": 1,
     "updated": "2026-11-19T04:45:00Z"
   },
@@ -328,6 +381,7 @@
     "word": "malarkey",
     "date": "2026-11-18",
     "hook_style": "relatable",
+    "format": "v1-15s",
     "instagram": {
       "url": "https://www.instagram.com/reel/Df45LJ1Ee_C/",
       "views": 114,
@@ -338,7 +392,10 @@
       "saves": 0,
       "follows": null,
       "avg_watch_time": 3.745,
-      "note": "follows not available per reel in Metricool; comment likely our first comment"
+      "note": "follows not available per reel in Metricool; comments_ext excludes our own first comment",
+      "view_rate": 22.1,
+      "skip_rate": 77.9,
+      "comments_ext": 0
     },
     "facebook": {
       "url": "https://facebook.com/reel/2249049439288195",
@@ -349,8 +406,9 @@
       "note": "Metricool FB reels: reach reported 0; comments/shares not exposed; not in score"
     },
     "tiktok": null,
-    "score": 8.83,
+    "score": 9.91,
     "provisional": true,
+    "low_sample": false,
     "age_days": 0,
     "updated": "2026-11-19T04:45:00Z"
   }
