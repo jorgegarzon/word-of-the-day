@@ -227,30 +227,28 @@ def build_short(w, dur):
             x = (a - lw - extra) / 2; y = 10 + k * 78
             d.text((x, y), ln, font=fh, fill=CREAM)
             if extra: d._image.alpha_composite(eim, (int(x + lw + 16), int(y + 8)))
+    bell = emoji_img("🔔", 48)
     def frame(t):
         fr = Frame(bg(t * 7.5 / dur))
-        T_CTA = float(w.get("cta_at", dur - 0.3))
-        hv = 1 - eo((t - (T_CTA - 0.1)) / 0.1) if t >= T_CTA - 0.1 else 1
-        if hl: fr.el(W - 80, 30 + 78 * len(hl), draw_hook, W / 2, 280 + 39 * (len(hl) - 1), hv)
-        if t >= T_CTA:
-            fc = F(EXTRA, 52); cta = w.get("cta", "Follow for your word of the day"); bell = emoji_img("🔔", 56)
-            def draw_cta(d, a, b):
-                d.rounded_rectangle([0, 0, a - 1, b - 1], b / 2, fill=ACC)
-                tw = d.textlength(cta, font=fc); x = (a - tw - bell.width - 16) / 2
-                d.text((x, (b - fc.size * 1.25) / 2), cta, font=fc, fill=DARK)
-                d._image.alpha_composite(bell, (int(x + tw + 16), int((b - bell.height) / 2)))
-            sc = max(0.01, eb((t - T_CTA) / 0.25))
-            fr.el(980, 120, draw_cta, W / 2, 300, 1, sc)
+        if hl: fr.el(W - 80, 30 + 78 * len(hl), draw_hook, W / 2, 220 + 39 * (len(hl) - 1))
+        fc = F(ITAL, 50); cta = w.get("cta", "Follow for your word of the day")
+        def draw_cta(d, a, b):
+            tw = d.textlength(cta, font=fc); x = (a - tw - bell.width - 14) / 2; y = (b - fc.size * 1.25) / 2
+            for ox, oy in ((-2, 0), (2, 0), (0, -2), (0, 2), (0, 4)):
+                d.text((x + ox, y + oy), cta, font=fc, fill=(0, 0, 0, 140))
+            d.text((x, y), cta, font=fc, fill=(255, 255, 255, 255))
+            d._image.alpha_composite(bell, (int(x + tw + 14), int((b - bell.height) / 2)))
+        fr.el(980, 90, draw_cta, W / 2, 1545)
         pop = 1 + 0.10 * math.sin(math.pi * clamp((t - T_REV) / 0.3)) if T_REV <= t <= T_REV + 0.3 else 1
-        fr.el(W, ws * 1.5, lambda d, a, b: ctext(d, a, b, word, fw, CREAM), W / 2, 580, 1, pop)
-        fr.el(W, 80, lambda d, a, b: ctext(d, a, b, f"{w['pronunciation']}  ·  {w['part_of_speech']}", F(REG, 44), SOFT), W / 2, 730)
+        fr.el(W, ws * 1.5, lambda d, a, b: ctext(d, a, b, word, fw, CREAM), W / 2, 520, 1, pop)
+        fr.el(W, 80, lambda d, a, b: ctext(d, a, b, f"{w['pronunciation']}  ·  {w['part_of_speech']}", F(REG, 44), SOFT), W / 2, 670)
         revealed = t >= T_REV
         OPT_AT = w.get("options_at", [0.4, 0.8, 1.2]); CNT_AT = w.get("countdown_at", [1.4, 1.6, 1.8])
         for k, c0 in enumerate(CNT_AT):
             c1 = CNT_AT[k + 1] if k + 1 < len(CNT_AT) else min(T_REV, c0 + (CNT_AT[1] - CNT_AT[0] if len(CNT_AT) > 1 else 0.5))
             if c0 <= t < c1:
                 fr.el(300, 300, lambda d, a, b, k=k: ctext(d, a, b, str(len(CNT_AT) - k), F(EXTRA, 220), ACC),
-                      W / 2, 1460, 1, max(0.01, eb((t - c0) / 0.15)))
+                      W / 2, 1400, 1, max(0.01, eb((t - c0) / 0.15)))
         for i, o in enumerate(opts):
             if t < OPT_AT[i]: continue
             is_ans = i == ans
@@ -264,7 +262,7 @@ def build_short(w, dur):
                 for k, ln in enumerate(lines):
                     d.text((115, (b - 58 * len(lines)) / 2 + 58 * k - 6), ln, font=fo, fill=txtc)
             sc = 1 + 0.08 * math.sin(math.pi * clamp((t - T_REV) / 0.3)) if (revealed and is_ans) else max(0.01, eb((t - OPT_AT[i]) / 0.2))
-            fr.el(920, hh, draw_opt, W / 2, 900 + i * 175, dim, sc)
+            fr.el(920, hh, draw_opt, W / 2, 840 + i * 175, dim, sc)
         T_EX = float(w.get("sentence_at", T_REV + 0.1))
         ex = eo((t - T_EX) / 0.2) if t >= T_EX else 0
         if ex:
@@ -281,7 +279,7 @@ def build_short(w, dur):
                         d.text((x, y), post, font=fi, fill=CREAM)
                     else: d.text((x, y), ln, font=fi, fill=CREAM)
             hb = 56 + 68 * len(lines)
-            fr.el(980, hb, draw_ex, W / 2, 1340 + hb / 2 + (1 - ex) * 30, ex)
+            fr.el(980, hb, draw_ex, W / 2, 1280 + hb / 2 + (1 - ex) * 30, ex)
         return fr.img
     return frame, bg
 
@@ -323,7 +321,7 @@ def main():
     global DUR
     if "--short" in sys.argv:
         DUR = float(w.get("duration", 2.0)); frame, bg = build_short(w, DUR)
-        times = [0.3, 1.7, 2.7, 3.6, 4.0, DUR - 0.1]
+        times = [0.3, 2.0, 2.7, 4.3, 5.0, DUR - 0.1]
     else:
         frame, bg = build(w); times = [0.0, 2.0, 5.5, 7.6, 10.5, 13.8, 14.97]
     if "--frames" in sys.argv:
