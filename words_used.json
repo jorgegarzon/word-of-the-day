@@ -232,7 +232,7 @@
     "word": "whippersnapper",
     "date": "2026-11-19",
     "number": 15,
-    "posted": "scheduled",
+    "posted": "published",
     "hook_style": "relatable",
     "hook": "When a teenager explains your own phone to you 📱",
     "caption": "When a teenager explains your own phone to you 📱\n\nGuess before the reveal 👀 A, B or C?\n\nFollow @canyouguessthisword for tomorrow's word\n\n#wordoftheday #vocabulary #englishwords #learnenglish #genz",
@@ -240,7 +240,11 @@
     "publish_at": "2026-11-19T10:00:00-06:00",
     "file": "videos/wotd-2026-11-19-whippersnapper.mp4",
     "verified": "merriam-webster.com",
-    "metricool_uuid": "3756839243228859602"
+    "metricool_uuid": "3756839243228859602",
+    "instagram_url": "https://www.instagram.com/reel/Df7duIDnPUr/",
+    "facebook_url": "https://facebook.com/reel/2620492898377086",
+    "published_at": "2026-11-19T10:00:00-06:00",
+    "publish_note": "Metricool shows both providers PUBLISHED with public URLs; reel not yet in IG/FB reels analytics at 2026-11-19 23:45 ET (sync lag); published_at is the scheduled time"
   },
   {
     "word": "nincompoop",
