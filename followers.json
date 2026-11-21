@@ -51,9 +51,15 @@
   },
   {
     "date": "2026-11-19",
-    "instagram_followers": 5,
+    "instagram_followers": 6,
+    "instagram_gained": 0,
+    "instagram_lost": 0
+  },
+  {
+    "date": "2026-11-20",
+    "instagram_followers": 6,
     "instagram_gained": 0,
     "instagram_lost": 0,
-    "note": "IGEV01 not yet returned for 2026-11-19; carried from 2026-11-18 (5) since gained/lost were 0"
+    "note": "IGEV01 not yet returned for 2026-11-20; carried from 2026-11-19 (6) since gained/lost were 0"
   }
 ]

@@ -250,7 +250,7 @@
     "word": "nincompoop",
     "date": "2026-11-20",
     "number": 16,
-    "posted": "scheduled",
+    "posted": "published",
     "hook_style": "surprise",
     "hook": "This sounds like baby talk. It's a real word 🍼",
     "caption": "This sounds like baby talk. It's a real word 🍼\n\nGuess before the reveal 👀 A, B or C?\n\nFollow @canyouguessthisword for tomorrow's word\n\n#wordoftheday #vocabulary #englishwords #learnenglish #funny",
@@ -261,7 +261,11 @@
     "metricool_uuid": "1185615213654069013",
     "format": "v2-6.6s",
     "rerendered": "2026-11-19",
-    "planner_url": "https://app.metricool.com/planner/calendar?blogId=7951497&openWithPostUuid=1185615213654069013"
+    "planner_url": "https://app.metricool.com/planner/calendar?blogId=7951497&openWithPostUuid=1185615213654069013",
+    "instagram_url": "https://www.instagram.com/reel/Df-C7ZllWhM/",
+    "facebook_url": "https://facebook.com/reel/1153352610423025",
+    "published_at": "2026-11-20T10:00:00-06:00",
+    "publish_note": "Metricool shows both providers PUBLISHED with public URLs; reel not yet in IG/FB reels analytics at 2026-11-20 23:45 ET (sync lag); published_at is the scheduled time"
   },
   {
     "word": "rigmarole",
