@@ -292,7 +292,7 @@
     "word": "hornswoggle",
     "date": "2026-11-22",
     "number": 18,
-    "posted": "scheduled",
+    "posted": "failed",
     "hook_style": "surprise",
     "hook": "This sounds like a farm animal. It's not 🐄",
     "caption": "This sounds like a farm animal. It's not 🐄\n\nGuess before the reveal 👀 A, B or C?\n\nFollow @canyouguessthisword for tomorrow's word\n\n#wordoftheday #vocabulary #englishwords #learnenglish #cooking",
@@ -303,7 +303,10 @@
     "metricool_uuid": "8047047977306508421",
     "format": "v2-6.6s",
     "rerendered": "2026-11-19",
-    "planner_url": "https://app.metricool.com/planner/calendar?blogId=7951497&openWithPostUuid=8047047977306508421"
+    "planner_url": "https://app.metricool.com/planner/calendar?blogId=7951497&openWithPostUuid=8047047977306508421",
+    "facebook_url": "https://facebook.com/reel/2315350682639763",
+    "failed_reason": "Instagram ERROR in Metricool: \"Internal Server An internal server error has occurred. Video download failed with: HTTP error code 500. Fwdproxy failed to fetch headers\". Facebook reel published OK.",
+    "checked_at": "2026-11-23T04:45:00Z"
   },
   {
     "word": "hobnob",
