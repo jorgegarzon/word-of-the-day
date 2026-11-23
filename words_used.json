@@ -292,21 +292,26 @@
     "word": "hornswoggle",
     "date": "2026-11-22",
     "number": 18,
-    "posted": "failed",
+    "posted": "scheduled",
     "hook_style": "surprise",
     "hook": "This sounds like a farm animal. It's not 🐄",
     "caption": "This sounds like a farm animal. It's not 🐄\n\nGuess before the reveal 👀 A, B or C?\n\nFollow @canyouguessthisword for tomorrow's word\n\n#wordoftheday #vocabulary #englishwords #learnenglish #cooking",
     "first_comment": "Us after the 5-minute recipe took two hours. Total hornswoggle 🍳",
-    "publish_at": "2026-11-22T13:00:00-06:00",
+    "publish_at": "2026-11-23T11:05:00-06:00",
     "file": "videos/wotd-2026-11-22-hornswoggle-v2.mp4",
     "verified": "merriam-webster.com",
-    "metricool_uuid": "8047047977306508421",
+    "metricool_uuid": "8652643355934474974",
     "format": "v2-6.6s",
     "rerendered": "2026-11-19",
-    "planner_url": "https://app.metricool.com/planner/calendar?blogId=7951497&openWithPostUuid=8047047977306508421",
+    "planner_url": "https://app.metricool.com/planner/calendar?blogId=7951497&openWithPostUuid=8652643355934474974",
     "facebook_url": "https://facebook.com/reel/2315350682639763",
-    "failed_reason": "Instagram ERROR in Metricool: \"Internal Server An internal server error has occurred. Video download failed with: HTTP error code 500. Fwdproxy failed to fetch headers\". Facebook reel published OK.",
-    "checked_at": "2026-11-23T04:45:00Z"
+    "first_attempt": {
+      "metricool_uuid": "8047047977306508421",
+      "publish_at": "2026-11-22T13:00:00-06:00",
+      "result": "Instagram failed, Facebook published",
+      "failed_reason": "Instagram ERROR in Metricool: \"Internal Server An internal server error has occurred. Video download failed with: HTTP error code 500. Fwdproxy failed to fetch headers\". Facebook reel published OK."
+    },
+    "retry_note": "Instagram-only retry requested by Jorge on 2026-11-23; facebook_url is from the first attempt"
   },
   {
     "word": "hobnob",
