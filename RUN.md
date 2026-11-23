@@ -10,6 +10,10 @@
 >   `countdown_at`, `reveal`, `sentence_at`) and the on-screen hook in `screen_hook`. See `batch/2026-nov-dec-v2.py`.
 > - Hooks: about 2/3 `surprise` in the pattern "This sounds like X. It's not 🦕". Every hook ends with an emoji.
 > - Times: weekdays 10:00 Mexico City; Saturday and Sunday **12:00 MST (13:00 Mexico City)**.
+> **v3 A/B test since 2026-11-24** (see `docs/2026-11-23-v3-ab-test.md`): posts alternate v3 (5.4s, everything on
+> screen at frame 0, `"v3": true` in the word JSON) and v2 by day. `format` in `words_used.json` says which one each
+> post is. Any new post made while the test runs continues the alternation.
+>
 > - These v2 rules override the 15s format, the hook rotation and the 06:00 time described below.
 
 

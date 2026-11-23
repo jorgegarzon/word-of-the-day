@@ -20,7 +20,9 @@ Background on the metrics and the v2 format: `docs/2026-11-19-v2-rerender.md`.
    Write/refresh its entry in `metrics.json`:
    `{"word", "date", "hook_style", "format", "instagram": {..., "skip_rate", "view_rate"}, "facebook": {...},
    "tiktok": {...}, "score", "provisional", "low_sample", "age_days", "updated"}`.
-   `format` comes from `words_used.json` (`"v2-6.6s"`, or `"v1-15s"` when the entry has none).
+   `format` comes from `words_used.json` (`"v3-5.4s"`, `"v2-6.6s"`, or `"v1-15s"` when the entry has none).
+   Also copy `ab_test` when the entry has it. If Jorge has given an Instagram "dropped at 1 second" figure
+   for a reel, keep it as `instagram.drop_1s` (percent) and never overwrite it with null.
 
    **Engagement**: we post the first comment on every reel ourselves, so subtract 1 from Instagram
    comments: `comments_ext = max(0, comments - 1)`, and store it next to `comments`.
@@ -50,7 +52,12 @@ Background on the metrics and the v2 format: `docs/2026-11-19-v2-rerender.md`.
 
    **Sunday nights**: email a weekly "Hook report":
    - Per hook style: posts measured, avg views, avg skip rate, avg watch time, avg score; name the leader.
-   - **v1 vs v2**: for each format, posts measured, avg views, avg skip rate, avg view rate, avg watch time,
+   - **v3 vs v2 A/B test** (from 2026-11-24, see `docs/2026-11-23-v3-ab-test.md`): put this first. For posts
+     with `ab_test`, per format: posts measured, avg skip rate, avg view rate, avg watch time and watch time as %
+     of the video length (5.4s / 6.6s), avg views, avg score, followers gained on the days each format posted, and
+     avg `drop_1s` when available. Say which format is ahead on skip rate and by how much, or that there isn't
+     enough data yet.
+   - **All formats (v1, v2, v3)**: for each format, posts measured, avg views, avg skip rate, avg view rate, avg watch time,
      and followers gained during the days each format was posting (from `followers.json`).
    - The 3 best and 3 worst eligible posts of the past 4 weeks, with their hooks.
    - Followers at the start and end of the week.

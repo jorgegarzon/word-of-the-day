@@ -219,6 +219,8 @@ def build_short(w, dur):
     opts, ans = w["options"], w["answer"]
     fo = F(REG, 50); fol = F(BOLD, 54)
     T_REV = float(w.get("reveal", 0.9))
+    V3 = bool(w.get("v3"))  # v3: everything on screen at frame 0 with a punch-in, CTA only at the end
+    CTA_AT = float(w.get("cta_at", 0.0))
     hook = w.get("screen_hook", ""); hl, emo = [], ""
     for size in range(58, 42, -2):  # shrink until each sentence fits on its own line
         fh = F(EXTRA, size)
@@ -244,8 +246,10 @@ def build_short(w, dur):
                 d.text((x + ox, y + oy), cta, font=fc, fill=(0, 0, 0, 140))
             d.text((x, y), cta, font=fc, fill=(255, 255, 255, 255))
             d._image.alpha_composite(bell, (int(x + tw + 14), int((b - bell.height) / 2)))
-        fr.el(980, 90, draw_cta, W / 2, 1545)
+        cta_a = (eo((t - CTA_AT) / 0.3) if t >= CTA_AT else 0.0) if V3 else 1.0
+        fr.el(980, 90, draw_cta, W / 2, 1545, cta_a)
         pop = 1 + 0.10 * math.sin(math.pi * clamp((t - T_REV) / 0.3)) if T_REV <= t <= T_REV + 0.3 else 1
+        if V3 and t < 0.3: pop = 0.86 + 0.14 * eo(t / 0.3)  # grow in (shrinking from >1 would clip long words)
         fr.el(W, ws * 1.5, lambda d, a, b: ctext(d, a, b, word, fw, CREAM), W / 2, 520, 1, pop)
         fr.el(W, 80, lambda d, a, b: ctext(d, a, b, f"{w['pronunciation']}  ·  {w['part_of_speech']}", F(REG, 44), SOFT), W / 2, 670)
         revealed = t >= T_REV
@@ -268,6 +272,7 @@ def build_short(w, dur):
                 for k, ln in enumerate(lines):
                     d.text((115, (b - 58 * len(lines)) / 2 + 58 * k - 6), ln, font=fo, fill=txtc)
             sc = 1 + 0.08 * math.sin(math.pi * clamp((t - T_REV) / 0.3)) if (revealed and is_ans) else max(0.01, eb((t - OPT_AT[i]) / 0.2))
+            if V3 and not revealed: sc = 1 + 0.10 * (1 - eo((t - 0.05 * i) / 0.3))
             fr.el(920, hh, draw_opt, W / 2, 840 + i * 175, dim, sc)
         T_EX = float(w.get("sentence_at", T_REV + 0.1))
         ex = eo((t - T_EX) / 0.2) if t >= T_EX else 0
@@ -291,7 +296,7 @@ def build_short(w, dur):
         return fr.img
     return frame, bg
 
-def make_music(dur, path, sr=44100):
+def make_music(dur, path, sr=44100, fade_in=True):
     t = np.arange(int(dur * sr)) / sr; out = np.zeros_like(t)
     chords = [[261.63, 329.63, 392.0, 493.88], [220.0, 261.63, 329.63, 392.0], [174.61, 220.0, 261.63, 329.63], [196.0, 246.94, 293.66, 392.0]]
     clen = dur / 4
@@ -304,7 +309,7 @@ def make_music(dur, path, sr=44100):
             ps = s + k * 0.4; f = ch[k % 4] * 2; m = (t >= ps) & (t < ps + 1.2); pt = t[m] - ps
             out[m] += 0.055 * np.exp(-pt * 5) * np.sin(2 * np.pi * f * pt)
     d = int(0.3 * sr); echo = np.zeros_like(out); echo[d:] = out[:-d] * 0.3; out += echo
-    out *= np.minimum(1, np.minimum(t / 0.3, (dur - t) / 0.4))
+    out *= np.minimum(1, np.minimum(t / 0.3 if fade_in else 1, (dur - t) / 0.4))
     out = out / (np.abs(out).max() + 1e-9) * 0.5
     with wave.open(path, "wb") as wf:
         wf.setnchannels(2); wf.setsampwidth(2); wf.setframerate(sr)
@@ -322,6 +327,16 @@ def add_ticks(path, times, sr=44100):
     with wave.open(path, "wb") as wf:
         wf.setnchannels(2); wf.setsampwidth(2); wf.setframerate(sr); wf.writeframes((a * 32767).astype(np.int16).tobytes())
 
+def add_pop(path, sr=44100):
+    """v3: a bright pop at 0.0s so the first frame isn't silent"""
+    with wave.open(path) as wf: a = np.frombuffer(wf.readframes(wf.getnframes()), np.int16).reshape(-1, 2).astype(np.float32) / 32767
+    tt = np.arange(int(0.18 * sr)) / sr
+    f = 1400 * np.exp(-tt * 12) + 380  # quick downward sweep
+    pop = np.sin(2 * np.pi * np.cumsum(f) / sr) * np.exp(-tt * 22) * 0.7
+    a[:len(pop)] += pop[:, None]; a = np.clip(a, -1, 1)
+    with wave.open(path, "wb") as wf:
+        wf.setnchannels(2); wf.setsampwidth(2); wf.setframerate(sr); wf.writeframes((a * 32767).astype(np.int16).tobytes())
+
 def main():
     args = [a for a in sys.argv[1:] if not a.startswith("--")]
     w = json.load(open(args[0])); out = args[1]; narr = args[2] if len(args) > 2 else None
@@ -329,7 +344,7 @@ def main():
     global DUR
     if "--short" in sys.argv:
         DUR = float(w.get("duration", 2.0)); frame, bg = build_short(w, DUR)
-        times = [0.3, 2.0, 2.7, 4.3, 5.0, DUR - 0.1]
+        times = [0.0, 0.15, 1.0, 2.0, float(w.get("reveal", 0.9)) + 0.4, DUR - 0.1] if w.get("v3") else [0.3, 2.0, 2.7, 4.3, 5.0, DUR - 0.1]
     else:
         frame, bg = build(w); times = [0.0, 2.0, 5.5, 7.6, 10.5, 13.8, 14.97]
     if "--frames" in sys.argv:
@@ -343,8 +358,9 @@ def main():
     p.stdin.close()
     if p.wait(): raise SystemExit("video encode failed")
     os.replace(vid, f"{work}/video.mp4")
-    make_music(DUR, f"{work}/music.wav")
+    make_music(DUR, f"{work}/music.wav", fade_in=not w.get("v3"))
     if "--short" in sys.argv: add_ticks(f"{work}/music.wav", w.get("countdown_at", [1.4, 1.6, 1.8]))
+    if w.get("v3"): add_pop(f"{work}/music.wav")
     tmp = out[:-4] + ".part.mp4"
     if narr:
         cmd = ["ffmpeg", "-y", "-loglevel", "error", "-i", f"{work}/video.mp4", "-i", f"{work}/music.wav", "-i", narr,
