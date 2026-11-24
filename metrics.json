@@ -24,8 +24,8 @@
     "score": 23.42,
     "provisional": false,
     "low_sample": false,
-    "age_days": 15,
-    "updated": "2026-11-23T04:45:00Z"
+    "age_days": 16,
+    "updated": "2026-11-24T04:45:00Z"
   },
   {
     "word": "petrichor",
@@ -59,8 +59,8 @@
     "score": 17.13,
     "provisional": false,
     "low_sample": false,
-    "age_days": 14,
-    "updated": "2026-11-23T04:45:00Z"
+    "age_days": 15,
+    "updated": "2026-11-24T04:45:00Z"
   },
   {
     "word": "flabbergasted",
@@ -94,8 +94,8 @@
     "score": 9.85,
     "provisional": false,
     "low_sample": false,
-    "age_days": 13,
-    "updated": "2026-11-23T04:45:00Z"
+    "age_days": 14,
+    "updated": "2026-11-24T04:45:00Z"
   },
   {
     "word": "bamboozle",
@@ -129,8 +129,8 @@
     "score": 15.81,
     "provisional": false,
     "low_sample": false,
-    "age_days": 12,
-    "updated": "2026-11-23T04:45:00Z"
+    "age_days": 13,
+    "updated": "2026-11-24T04:45:00Z"
   },
   {
     "word": "skedaddle",
@@ -164,8 +164,8 @@
     "score": 8.9,
     "provisional": false,
     "low_sample": false,
-    "age_days": 11,
-    "updated": "2026-11-23T04:45:00Z"
+    "age_days": 12,
+    "updated": "2026-11-24T04:45:00Z"
   },
   {
     "word": "shenanigans",
@@ -199,8 +199,8 @@
     "score": 9.14,
     "provisional": false,
     "low_sample": false,
-    "age_days": 10,
-    "updated": "2026-11-23T04:45:00Z"
+    "age_days": 11,
+    "updated": "2026-11-24T04:45:00Z"
   },
   {
     "word": "dillydally",
@@ -234,8 +234,8 @@
     "score": 9.85,
     "provisional": false,
     "low_sample": false,
-    "age_days": 9,
-    "updated": "2026-11-23T04:45:00Z"
+    "age_days": 10,
+    "updated": "2026-11-24T04:45:00Z"
   },
   {
     "word": "persnickety",
@@ -269,8 +269,8 @@
     "score": 24.8,
     "provisional": false,
     "low_sample": true,
-    "age_days": 8,
-    "updated": "2026-11-23T04:45:00Z"
+    "age_days": 9,
+    "updated": "2026-11-24T04:45:00Z"
   },
   {
     "word": "gallivant",
@@ -304,8 +304,8 @@
     "score": 40.25,
     "provisional": false,
     "low_sample": true,
-    "age_days": 7,
-    "updated": "2026-11-23T04:45:00Z"
+    "age_days": 8,
+    "updated": "2026-11-24T04:45:00Z"
   },
   {
     "word": "lackadaisical",
@@ -339,8 +339,8 @@
     "score": 17.02,
     "provisional": false,
     "low_sample": false,
-    "age_days": 6,
-    "updated": "2026-11-23T04:45:00Z"
+    "age_days": 7,
+    "updated": "2026-11-24T04:45:00Z"
   },
   {
     "word": "cantankerous",
@@ -374,8 +374,8 @@
     "score": 9.78,
     "provisional": false,
     "low_sample": false,
-    "age_days": 5,
-    "updated": "2026-11-23T04:45:00Z"
+    "age_days": 6,
+    "updated": "2026-11-24T04:45:00Z"
   },
   {
     "word": "malarkey",
@@ -409,8 +409,8 @@
     "score": 18.26,
     "provisional": false,
     "low_sample": false,
-    "age_days": 4,
-    "updated": "2026-11-23T04:45:00Z"
+    "age_days": 5,
+    "updated": "2026-11-24T04:45:00Z"
   },
   {
     "word": "whippersnapper",
@@ -444,8 +444,8 @@
     "score": 17.27,
     "provisional": false,
     "low_sample": false,
-    "age_days": 3,
-    "updated": "2026-11-23T04:45:00Z"
+    "age_days": 4,
+    "updated": "2026-11-24T04:45:00Z"
   },
   {
     "word": "nincompoop",
@@ -477,10 +477,10 @@
     },
     "tiktok": null,
     "score": 16.03,
-    "provisional": true,
+    "provisional": false,
     "low_sample": false,
-    "age_days": 2,
-    "updated": "2026-11-23T04:45:00Z"
+    "age_days": 3,
+    "updated": "2026-11-24T04:45:00Z"
   },
   {
     "word": "rigmarole",
@@ -514,7 +514,7 @@
     "score": 18.73,
     "provisional": true,
     "low_sample": false,
-    "age_days": 1,
-    "updated": "2026-11-23T04:45:00Z"
+    "age_days": 2,
+    "updated": "2026-11-24T04:45:00Z"
   }
 ]

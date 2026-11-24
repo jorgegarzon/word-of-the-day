@@ -292,7 +292,7 @@
     "word": "hornswoggle",
     "date": "2026-11-22",
     "number": 18,
-    "posted": "scheduled",
+    "posted": "published",
     "hook_style": "surprise",
     "hook": "This sounds like a farm animal. It's not 🐄",
     "caption": "This sounds like a farm animal. It's not 🐄\n\nGuess before the reveal 👀 A, B or C?\n\nFollow @canyouguessthisword for tomorrow's word\n\n#wordoftheday #vocabulary #englishwords #learnenglish #cooking",
@@ -311,13 +311,16 @@
       "result": "Instagram failed, Facebook published",
       "failed_reason": "Instagram ERROR in Metricool: \"Internal Server An internal server error has occurred. Video download failed with: HTTP error code 500. Fwdproxy failed to fetch headers\". Facebook reel published OK."
     },
-    "retry_note": "Instagram-only retry requested by Jorge on 2026-11-23; facebook_url is from the first attempt"
+    "retry_note": "Instagram-only retry requested by Jorge on 2026-11-23; facebook_url is from the first attempt",
+    "instagram_url": "https://www.instagram.com/reel/DgF5CqxjvLX/",
+    "published_at": "2026-11-23T11:05:00-06:00",
+    "publish_note": "Instagram retry (uuid 8652643355934474974) PUBLISHED at 2026-11-23 11:05 CT; Facebook reel from first attempt 2026-11-22 13:00 CT. Instagram reel not yet in IG reels analytics at 2026-11-23 23:45 ET (sync lag); published_at is the Instagram retry time"
   },
   {
     "word": "hobnob",
     "date": "2026-11-23",
     "number": 19,
-    "posted": "scheduled",
+    "posted": "published",
     "hook_style": "surprise",
     "hook": "This sounds like something hobbits do. It's not 🧙",
     "caption": "This sounds like something hobbits do. It's not 🧙\n\nGuess before the reveal 👀 A, B or C?\n\nFollow @canyouguessthisword for tomorrow's word\n\n#wordoftheday #vocabulary #englishwords #learnenglish #officeparty",
@@ -328,7 +331,11 @@
     "metricool_uuid": "4293347505866362164",
     "format": "v2-6.6s",
     "rerendered": "2026-11-19",
-    "planner_url": "https://app.metricool.com/planner/calendar?blogId=7951497&openWithPostUuid=4293347505866362164"
+    "planner_url": "https://app.metricool.com/planner/calendar?blogId=7951497&openWithPostUuid=4293347505866362164",
+    "instagram_url": "https://www.instagram.com/reel/DgFw-cvirOC/",
+    "facebook_url": "https://facebook.com/reel/2202426480358962",
+    "published_at": "2026-11-23T10:00:00-06:00",
+    "publish_note": "Metricool shows both providers PUBLISHED with public URLs; reel not yet in IG/FB reels analytics at 2026-11-23 23:45 ET (sync lag); published_at is the scheduled time"
   },
   {
     "word": "higgledy-piggledy",
