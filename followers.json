@@ -76,9 +76,16 @@
   },
   {
     "date": "2026-11-23",
-    "instagram_followers": 7,
+    "instagram_followers": 9,
     "instagram_gained": 0,
     "instagram_lost": 0,
-    "note": "IGEV01 not yet returned for 2026-11-23; carried from 2026-11-22 (7) since gained/lost were 0"
+    "note": "IGEV01 for 2026-11-23 returned 9 on the 2026-11-24 run (replaces carried value 7); IGEV43/44 returned no values for this date on this run, gained/lost kept from the earlier run"
+  },
+  {
+    "date": "2026-11-24",
+    "instagram_followers": 9,
+    "instagram_gained": 0,
+    "instagram_lost": 0,
+    "note": "IGEV01 not yet returned for 2026-11-24; carried from 2026-11-23 (9) since gained/lost were 0"
   }
 ]

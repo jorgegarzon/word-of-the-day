@@ -341,7 +341,7 @@
     "word": "higgledy-piggledy",
     "date": "2026-11-24",
     "number": 20,
-    "posted": "scheduled",
+    "posted": "published",
     "hook_style": "challenge",
     "hook": "I bet your bedroom looks like this right now 👀",
     "caption": "I bet your bedroom looks like this right now 👀\n\nGuess before the reveal 👀 A, B or C?\n\nFollow @canyouguessthisword for tomorrow's word\n\n#wordoftheday #vocabulary #englishwords #learnenglish #organization",
@@ -353,7 +353,11 @@
     "format": "v3-5.4s",
     "rerendered": "2026-11-23",
     "planner_url": "https://app.metricool.com/planner/calendar?blogId=7951497&openWithPostUuid=-8235976754856310661",
-    "ab_test": "v3-vs-v2 (from 2026-11-24)"
+    "ab_test": "v3-vs-v2 (from 2026-11-24)",
+    "instagram_url": "https://www.instagram.com/reel/DgIWS93ExWQ/",
+    "facebook_url": "https://facebook.com/reel/1425128786498346",
+    "published_at": "2026-11-24T10:00:00-06:00",
+    "publish_note": "Metricool shows both providers PUBLISHED with public URLs; reel not yet in IG/FB reels analytics at 2026-11-24 23:45 ET (sync lag); published_at is the scheduled time"
   },
   {
     "word": "mollycoddle",
