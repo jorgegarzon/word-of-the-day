@@ -363,7 +363,7 @@
     "word": "mollycoddle",
     "date": "2026-11-25",
     "number": 21,
-    "posted": "scheduled",
+    "posted": "published",
     "hook_style": "surprise",
     "hook": "This sounds like a way to cook eggs. It's not 🥚",
     "caption": "This sounds like a way to cook eggs. It's not 🥚\n\nGuess before the reveal 👀 A, B or C?\n\nFollow @canyouguessthisword for tomorrow's word\n\n#wordoftheday #vocabulary #englishwords #learnenglish #dogs",
@@ -375,7 +375,11 @@
     "format": "v2-6.6s",
     "rerendered": "2026-11-19",
     "planner_url": "https://app.metricool.com/planner/calendar?blogId=7951497&openWithPostUuid=1185530967536256001",
-    "ab_test": "v3-vs-v2 (from 2026-11-24)"
+    "ab_test": "v3-vs-v2 (from 2026-11-24)",
+    "instagram_url": "https://www.instagram.com/reel/DgK6n10z10I/",
+    "facebook_url": "https://facebook.com/reel/1718615736552384",
+    "published_at": "2026-11-25T10:00:00-06:00",
+    "publish_note": "Metricool shows both providers PUBLISHED with public URLs; reel not yet in IG/FB reels analytics at 2026-11-25 23:40 ET (sync lag); published_at is the scheduled time"
   },
   {
     "word": "gobsmacked",
