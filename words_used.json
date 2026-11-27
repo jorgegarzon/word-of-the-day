@@ -385,7 +385,7 @@
     "word": "gobsmacked",
     "date": "2026-11-26",
     "number": 22,
-    "posted": "scheduled",
+    "posted": "published",
     "hook_style": "surprise",
     "hook": "This sounds like a punch. It's not 🥊",
     "caption": "This sounds like a punch. It's not 🥊\n\nGuess before the reveal 👀 A, B or C?\n\nFollow @canyouguessthisword for tomorrow's word\n\n#wordoftheday #vocabulary #englishwords #learnenglish #thanksgiving",
@@ -397,7 +397,11 @@
     "format": "v3-5.4s",
     "rerendered": "2026-11-23",
     "planner_url": "https://app.metricool.com/planner/calendar?blogId=7951497&openWithPostUuid=-2420380149686907770",
-    "ab_test": "v3-vs-v2 (from 2026-11-24)"
+    "ab_test": "v3-vs-v2 (from 2026-11-24)",
+    "instagram_url": "https://www.instagram.com/reel/DgNfsiZPB3d/",
+    "facebook_url": "https://facebook.com/reel/1040176815770289",
+    "published_at": "2026-11-26T10:00:00-06:00",
+    "publish_note": "Metricool shows both providers PUBLISHED with public URLs; reel not yet in IG/FB reels analytics at 2026-11-26 23:40 ET (sync lag); published_at is the scheduled time"
   },
   {
     "word": "fuddy-duddy",
